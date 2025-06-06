@@ -4,7 +4,7 @@ function Home() {
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    fetch("https://takklatring.no/wp-json/wp/v2/posts?per_page=1")
+    fetch("https://takklatring.no/innhold/wp-json/wp/v2/posts?per_page=1")
       .then((res) => res.json())
       .then((data) => {
         setPost(data[0]);
