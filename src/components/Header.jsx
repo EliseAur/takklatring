@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { NavDesktop, NavMobile } from "./index";
-import logoImage from "../images/Tak-logo-versjon-2-svart-medium.png";
+import logoImage from "../images/Tak-logo-versjon-2-darkblue-medium.png";
 
 /**
  * Header component displays the site logo and navigation menus for desktop and mobile.
@@ -70,7 +70,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full z-50 sticky top-0 bg-neutral-100">
+    <header className="w-full z-50 sticky top-0 bg-neutral-100 text-darkblue">
       <div className="flex py-3 px-3 sm:pr-5 max-w-[1280px] mx-auto">
         <div className="flex w-full justify-center items-center">
           <Link to="/" onClick={handleLogoClick} className="logo w-[200px] flex-1/3 hover:cursor-pointer tracking-tight">
@@ -90,7 +90,7 @@ export default function Header() {
             >
               <FontAwesomeIcon
                 icon={isOpen ? faTimes : faBars} // Toggle between faBars and faTimes
-                className="h-6 w-6 text-2xl text-black"
+                className="h-6 w-6 text-2xl text-darkblue"
                 title={isOpen ? "Close menu" : "Open menu"}
               />
             </button>

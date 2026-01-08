@@ -17,23 +17,21 @@ const heroImageUrl = "https://images.unsplash.com/photo-1644338785159-6c0a9dd037
  */
 export default function Hero() {
   return (
-    <section id="top" className="px-3 bg-neutral-100  py-4 lg:py-10 flex flex-col " style={{ minHeight: "calc(100vh - 94px)" }}>
-      <div className="grid lg:grid-cols-2 items-center justify-items-center gap-5 lg:gap-0">
-        <div className="">
-          <img src={heroImageUrl} alt="Profile" className="h-80 w-80 object-cover lg:h-[500px] lg:w-[500px] xl:h-[520px] xl:w-[530px] " />
-        </div>
-        <div className=" flex flex-col items-center justify-center lg:h-[500px] lg:w-[500px] xl:h-[520px] xl:w-[650px] sm:px-30 md:px-50 lg:px-10 xl:pl-0 xl:pr-20">
-          <h1 className="font-headings font-bold text-center text-4xl lg:text-5xl xl:text-6xl mb-2 break-words ">Velkommen til Tak og Fasadeklatring AS </h1>
-          <p className="font-body uppercase font-semibold text-md lg:text-lg mb-3">Alt av håndverk i høyden</p>
-          <p className="text-center font-body xs:text-sm sm:text-md xl:text-md mb-6 font-bold">
+    <section id="top" className="overflow-hidden" style={{ minHeight: "calc(100vh - 94px)" }}>
+      <div className="heroImage relative flex" style={{ minHeight: "calc(100vh - 94px)" }}>
+        <div className="absolute inset-0 bg-black opacity-50" />
+        <div className="relative z-20 my-auto mx-auto flex flex-col items-center p-6 h-full lg:px-10 xl:pl-0 xl:pr-20 w-[610px] xl:w-[650px]">
+          <h1 className="text-white font-headings font-bold text-center text-5xl lg:text-6xl xl:text-6xl mb-2 break-words ">Tak og Fasadeklatring AS </h1>
+          <p className="text-white font-body uppercase font-semibold text-md lg:text-lg mb-6 border-b-4 border-orange pb-6">Alt av håndverk i høyden</p>
+          <p className="text-white text-center font-body xs:text-sm sm:text-md xl:text-md mb-10 font-bold ">
             Vi tilbyr profesjonell og trygg utførelse av arbeid på tak og fasader – alt fra inspeksjon og vedlikehold til spesialoppdrag. Med fokus på kvalitet, sikkerhet og effektivitet hjelper vi
             deg med små og store prosjekter i høyden.
           </p>
           <div className="flex flex-row gap-2 sm:gap-5 md:w-80 justify-center">
-            <a href="#services" className="flex-1 text-center bg-black text-white py-3 px-8 sm:px-12 rounded-xs hover:cursor-pointer hover:bg-orange-500 uppercase">
+            <a href="#services" className="flex-1 text-center bg-orange text-white font-bold py-3 px-8 sm:px-12 rounded-xs hover:cursor-pointer hover:bg-orange-500 uppercase">
               Tjenester
             </a>
-            <a href="#projects" className="flex-1 text-center bg-black text-white py-3 px-8 sm:px-12 rounded-xs hover:cursor-pointer hover:bg-orange-500 uppercase">
+            <a href="#projects" className="flex-1 text-center bg-neutral-100 text-orange font-bold py-3 px-8 sm:px-12 rounded-xs hover:cursor-pointer hover:bg-orange-500 uppercase">
               Bestilling
             </a>
           </div>

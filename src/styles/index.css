@@ -3,6 +3,9 @@
 @theme {
   --font-headings: "Oswald", sans-serif;
   --font-body: "Lato", sans-serif;
+  --color-darkblue: #22293c;
+  --color-orange: #e96200;
+  --gradient-gradientOrange: linear-gradient(to bottom, var(--color-orange), var(--color-neutral-100));
 }
 
 #root {
@@ -21,4 +24,71 @@ body {
 
 body {
   background-color: var(--color-grey);
+}
+
+/* .heroImage {
+  background-image: url("../images/hero-img-1920-4.jpg");
+  background-size: cover;
+  background-position: center;
+} */
+
+.heroImage {
+  position: relative;
+  overflow: hidden;
+}
+
+/* bruk ::before for å vise bildet og skalere med transform */
+.heroImage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../images/hero-img-1920-4.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; /* dekker elementet */
+  transform: scale(1.3);
+  /* transition: transform 20s ease-in-out; */
+  will-change: transform;
+  z-index: 0;
+  animation: hero-zoom 20s ease-in-out infinite alternate;
+}
+
+/* sørg for at innholdet ligger over pseudo-elementet */
+.heroImage > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* overlay som dekker HELE containeren */
+.heroImage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); /*juster alpha*/
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* automatisk langsom zoom frem og tilbake */
+/* .heroImage.animate::before {
+  animation: hero-zoom 20s ease-in-out infinite alternate;
+} */
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.3);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* eller hover-variant (for desktop) */
+.heroImage:hover::before {
+  transform: scale(1);
+}
+
+/* innhold over overlay */
+.heroImage > * {
+  position: relative;
+  z-index: 20;
 }

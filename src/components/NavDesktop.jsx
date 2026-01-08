@@ -26,6 +26,7 @@ export default function NavDesktop() {
       <div className="flex-1/2 space-x-6 flex-grow mx-auto text-center uppercase font-bold">
         <Link
           to="/"
+          className="border-b-4 border-orange pb-1"
           onClick={(e) => {
             e.preventDefault();
             navigate("/", { state: { scrollTo: "projects" } });
@@ -35,6 +36,7 @@ export default function NavDesktop() {
         </Link>
         <Link
           to="/"
+          className="border-b-4 border-orange pb-1"
           onClick={(e) => {
             e.preventDefault();
             navigate("/", { state: { scrollTo: "about" } });
@@ -44,6 +46,7 @@ export default function NavDesktop() {
         </Link>
         <Link
           to="/"
+          className="border-b-4 border-orange-600 pb-1"
           onClick={(e) => {
             e.preventDefault();
             navigate("/", { state: { scrollTo: "contact" } });
