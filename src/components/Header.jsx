@@ -93,7 +93,7 @@ export default function Header() {
         </div>
       </div>
       {isOpen && (
-        <div ref={menuRef} className="fixed top-0 right-0 pl-15 pb-5 rounded-bl-sm flex flex-col items-center justify-start z-50 md:hidden">
+        <div ref={menuRef} className="fixed top-0 right-0 pl-15 pb-5 rounded-bl-sm flex flex-col items-center justify-start z-50 lg:hidden">
           <NavMobile onLinkClick={handleLinkClick} />
         </div>
       )}
