@@ -22,7 +22,7 @@ export default function NavDesktop() {
   const navigate = useNavigate();
 
   return (
-    <nav className="hidden md:flex justify-end w-full flex-2/3 mt-2">
+    <nav className="hidden lg:flex justify-end w-full flex-2/3 mt-2">
       <div className="flex-1/2 space-x-6 flex-grow mx-auto text-center uppercase font-bold">
         <Link
           to="/"

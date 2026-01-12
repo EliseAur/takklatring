@@ -29,7 +29,7 @@ export default function NavMobile({ onLinkClick }) {
   };
 
   return (
-    <nav className="md:hidden fixed top-0 left-0 w-full h-screen mt-[94px] flex flex-col items-center p-4 bg-neutral-100 font-headings uppercase font-bold text-xl pt-30 ">
+    <nav className=" lg:hidden fixed top-0 left-0 w-full h-screen mt-[94px] flex flex-col items-center p-4 bg-neutral-100 font-headings uppercase font-bold text-xl pt-30 ">
       <div className="flex flex-col space-y-5 text-center">
         <a
           href="#projects"
