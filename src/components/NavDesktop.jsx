@@ -46,7 +46,7 @@ export default function NavDesktop() {
         </Link>
         <Link
           to="/"
-          className="border-b-4 border-orange-600 pb-1"
+          className="border-b-4 border-orange pb-1"
           onClick={(e) => {
             e.preventDefault();
             navigate("/", { state: { scrollTo: "contact" } });

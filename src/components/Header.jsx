@@ -70,7 +70,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full z-50 sticky top-0 bg-neutral-100 text-darkblue">
+    <header className="w-full z-50 sticky top-0 bg-neutral-200 text-darkblue">
       <div className="flex py-3 px-3 sm:pr-5 max-w-[1280px] mx-auto">
         <div className="flex w-full justify-center items-center">
           <Link to="/" onClick={handleLogoClick} className="logo w-[200px] flex-1/3 hover:cursor-pointer tracking-tight">
