@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+@theme {
+  --font-headings: "Oswald", sans-serif;
+  --font-body: "Lato", sans-serif;
+  --color-darkblue: #22293c;
+  --color-orange: #e96200;
+  /* --color-orange: var(--color-orange-600); */
+  --gradient-gradientOrange: linear-gradient(to bottom, var(--color-orange), var(--color-neutral-100));
+}
+
+#root {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none; /* Prevent overscroll behavior */
+  font-family: var(--font-body);
+  scroll-behavior: smooth; /* Enable smooth scrolling */
+}
+
+body {
+  background-color: var(--color-grey);
+}
