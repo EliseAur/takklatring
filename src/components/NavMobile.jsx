@@ -29,29 +29,17 @@ export default function NavMobile({ onLinkClick }) {
   };
 
   return (
-    <nav className="lg:hidden fixed top-0 left-0 w-full h-screen mt-[88px] flex flex-col items-center p-4 bg-neutral-100 font-headings uppercase font-bold text-xl pt-30 ">
+    <nav className="lg:hidden fixed top-0 left-0 w-full h-screen mt-[88px] flex flex-col items-center p-4 bg-neutral-100 font-headings font-bold text-2xl pt-30 ">
       <div className="flex flex-col space-y-5 text-center">
-        <a
-          href="#projects"
-          onClick={handleNavClick("projects")}
-          className="border-2 hover:b hover:text-dark-purple active:border-dark-purple active:text-dark-purple hover:cursor-pointer py-4 px-20 rounded-xs shadow-xs "
-        >
+        <a href="#projects" onClick={handleNavClick("projects")} className="border-b-3 border-orange pb-1 px-2 mx-5 transition-all duration-200 hover:border-b-4 hover:cursor-pointer">
           Tjenester
         </a>
 
-        <a
-          href="#about"
-          onClick={handleNavClick("about")}
-          className="border-2 hover:border-dark-purple hover:text-dark-purple active:border-dark-purple active:text-dark-purple hover:cursor-pointer py-4 px-20 rounded-xs shadow-xs"
-        >
+        <a href="#about" onClick={handleNavClick("about")} className="border-b-3 border-orange pb-1 px-2 mx-5 transition-all duration-200 hover:border-b-4 hover:cursor-pointer">
           Blogg
         </a>
 
-        <a
-          href="#contact"
-          onClick={handleNavClick("contact")}
-          className="border-2 hover:border-dark-purple hover:text-dark-purple active:border-dark-purple active:text-dark-purple hover:cursor-pointer py-4 px-20 rounded-xs shadow-xs"
-        >
+        <a href="#contact" onClick={handleNavClick("contact")} className="border-b-3 border-orange pb-1 px-2 mx-5 transition-all duration-200 hover:border-b-4 hover:cursor-pointer">
           Kontakt
         </a>
       </div>

@@ -5,6 +5,7 @@
   --font-body: "Lato", sans-serif;
   --color-darkblue: #22293c;
   --color-orange: #e96200;
+  /* --color-orange: var(--color-orange-600); */
   --gradient-gradientOrange: linear-gradient(to bottom, var(--color-orange), var(--color-neutral-100));
 }
 

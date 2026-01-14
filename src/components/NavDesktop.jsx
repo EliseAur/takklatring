@@ -22,11 +22,11 @@ export default function NavDesktop() {
   const navigate = useNavigate();
 
   return (
-    <nav className="hidden lg:flex justify-end w-full flex-2/3 mt-2">
-      <div className="flex-1/2 space-x-6 flex-grow mx-auto text-center uppercase font-bold">
+    <nav className="hidden lg:flex justify-end w-full flex-2/3 mt-2 font-headings text-lg">
+      <div className="flex-1/2 space-x-6 flex-grow mx-auto text-center font-bold">
         <Link
           to="/"
-          className="border-b-4 border-orange pb-1"
+          className="border-b-3 border-orange pb-1 px-2 mx-5 transition-all duration-200 hover:border-b-4"
           onClick={(e) => {
             e.preventDefault();
             navigate("/", { state: { scrollTo: "projects" } });
@@ -36,7 +36,7 @@ export default function NavDesktop() {
         </Link>
         <Link
           to="/"
-          className="border-b-4 border-orange pb-1"
+          className="border-b-3 border-orange pb-1 px-2 mx-5 transition-all duration-200 hover:border-b-4"
           onClick={(e) => {
             e.preventDefault();
             navigate("/", { state: { scrollTo: "about" } });
@@ -46,7 +46,7 @@ export default function NavDesktop() {
         </Link>
         <Link
           to="/"
-          className="border-b-4 border-orange pb-1"
+          className="border-b-3 border-orange pb-1 px-2 mx-5 transition-all duration-200 hover:border-b-4"
           onClick={(e) => {
             e.preventDefault();
             navigate("/", { state: { scrollTo: "contact" } });
