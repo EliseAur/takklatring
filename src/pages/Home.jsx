@@ -1,4 +1,4 @@
-import { Hero } from "../components";
+import { Hero, ServicesPreview } from "../components";
 import { useFrontPageHero } from "../hooks/useFrontPageHero";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -38,6 +38,7 @@ export default function Home() {
   return (
     <>
       <Hero hero={hero} />
+      <ServicesPreview />
       {/* <ServicesSection />
       <BlogSection />
       <ReviewSection /> */}
