@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Header } from "./components";
 import Home from "./pages/Home";
+import ServiceDetail from "./pages/ServiceDetail";
 // import ProjectDetail from "./pages/ProjectDetail";
 
 /**
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           {/* <Route path="/projects/:id" element={<ProjectDetail />} /> */}
+          <Route path="/tjenester/:slug" element={<ServiceDetail />} />
         </Routes>
       </main>
       {/* <Footer /> */}

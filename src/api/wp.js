@@ -86,6 +86,7 @@ export async function getServiceBySlug(slug) {
     id: item.id,
     slug: item.slug,
     title: item.title.rendered,
+    content: item.content?.rendered || "",
     acf: item.acf,
     image_url: image.url,
     image_alt: image.alt,
