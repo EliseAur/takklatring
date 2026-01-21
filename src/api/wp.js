@@ -92,3 +92,52 @@ export async function getServiceBySlug(slug) {
     image_alt: image.alt,
   };
 }
+
+// Henter alle prosjekter (med featured image i _embed)
+export async function getProjects({ perPage = 100 } = {}) {
+  const res = await fetch(`${WP_BASE}/prosjekter?per_page=${perPage}&_embed=1`);
+  if (!res.ok) throw new Error("Kunne ikke hente prosjekter fra WP");
+
+  const data = await res.json();
+
+  return data.map((item) => {
+    const image = getFeaturedImage(item);
+
+    return {
+      id: item.id,
+      slug: item.slug,
+      title: item.title.rendered,
+      acf: item.acf,
+      image_url: image.url, // featured image (fra WP)
+      image_alt: image.alt,
+    };
+  });
+}
+
+// Henter "fremhevede" prosjekter (filtrert i frontend)
+export async function getFeaturedProjects({ limit = 3 } = {}) {
+  const projects = await getProjects();
+  return projects.filter((p) => p?.acf?.project_is_featured).slice(0, limit);
+}
+
+// Henter ett prosjekt basert på slug (til detaljside senere)
+export async function getProjectBySlug(slug) {
+  const res = await fetch(`${WP_BASE}/prosjekter?slug=${slug}&_embed=1`);
+  if (!res.ok) throw new Error("Kunne ikke hente prosjekt fra WP");
+
+  const data = await res.json();
+  const item = data?.[0];
+  if (!item) return null;
+
+  const image = getFeaturedImage(item);
+
+  return {
+    id: item.id,
+    slug: item.slug,
+    title: item.title.rendered,
+    acf: item.acf,
+    image_url: image.url,
+    image_alt: image.alt,
+    content: item.content?.rendered ?? "",
+  };
+}

@@ -21,28 +21,29 @@ export default function ServicesPreview() {
             Alle tjenester
           </Link>
         </div>
-
-        <div className="grid gap-7 md:grid-cols-3">
+        <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <Link key={service.id} to={`/tjenester/${service.slug}`} className="group bg-white rounded-sm shadow-md overflow-hidden hover:shadow-lg transition">
               {service.image_url && <img src={service.image_url} alt={service.image_alt || ""} className="h-48 w-full object-cover group-hover:scale-[1.02] transition-transform duration-300" />}
 
               <div className="p-6">
-                <h3 className="font-bold text-xl text-darkblue mb-2">{service.title}</h3>
+                <h3 className="font-bold text-xl text-darkblue mb-1">{service.title}</h3>
 
-                {service?.acf?.tjeneste_subtitle1 && <p className="text-neutral-800 font-semibold mb-2">{service.acf.tjeneste_subtitle1}</p>}
+                {service?.acf?.tjeneste_subtitle1 && <p className="text-neutral-800 font-bold mb-2">{service.acf.tjeneste_subtitle1}</p>}
 
                 {service?.acf?.tjeneste_short_description && <p className="text-neutral-700">{service.acf.tjeneste_short_description}</p>}
 
-                <p className="mt-4 font-semibold text-darkblue">Les mer →</p>
+                <p className="mt-4 font-bold text-darkblue">Les mer →</p>
               </div>
             </Link>
           ))}
         </div>
-
         {/* Mobil-knapp */}
         <div className="mt-10 sm:hidden">
-          <Link to="/tjenester" className="block text-center bg-orange text-darkblue font-headings font-bold py-3 px-8 rounded-xs uppercase">
+          <Link
+            to="/tjenester"
+            className="block text-center bg-orange text-darkblue text-md font-headings font-bold py-3 px-8 rounded-sm uppercase hover:cursor-pointer shadow-md hover:shadow-xl transition"
+          >
             Alle tjenester
           </Link>
         </div>
