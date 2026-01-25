@@ -58,16 +58,16 @@ export default function Hero({ hero }) {
 
           <div className="flex flex-row gap-2 sm:gap-5">
             <a
-              href="#services"
+              href=""
               className="flex-1 text-center bg-orange text-darkblue font-headings uppercase text-md lg:text-lg font-bold py-3 px-6 rounded-sm hover:cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] hover:shadow-xl hover:scale-[1.02]"
             >
-              Tjenester
+              Bestilling
             </a>
             <a
-              href="#projects"
+              href=""
               className="flex-1 text-center bg-neutral-100 text-darkblue font-headings uppercase text-md lg:text-lg font-bold py-3 px-6 rounded-sm hover:cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] hover:shadow-xl hover:scale-[1.02]"
             >
-              Bestilling
+              Tjenester
             </a>
           </div>
         </div>
