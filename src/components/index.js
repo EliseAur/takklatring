@@ -4,6 +4,7 @@ import NavDesktop from "./NavDesktop";
 import Hero from "./Hero";
 import ServicesPreview from "./ServicesPreview";
 import ProjectsPreview from "./ProjectsPreview";
+import BookingSection from "./BookingSection";
 // import Footer from "./Footer";
 
 export {
@@ -13,5 +14,6 @@ export {
   Hero,
   ServicesPreview,
   ProjectsPreview,
+  BookingSection,
   // Footer,
 };
