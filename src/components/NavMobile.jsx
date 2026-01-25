@@ -36,18 +36,21 @@ export default function NavMobile({ onLinkClick }) {
         </a>
 
         <a href="#about" onClick={handleNavClick("about")} className="border-b-3 border-orange pb-1 px-2 mx-5 transition-all duration-200 hover:border-b-4 hover:cursor-pointer">
-          Blogg
+          Bestilling
         </a>
 
         <a href="#contact" onClick={handleNavClick("contact")} className="border-b-3 border-orange pb-1 px-2 mx-5 transition-all duration-200 hover:border-b-4 hover:cursor-pointer">
-          Kontakt
+          Prosjekter
+        </a>
+        <a href="#contact" onClick={handleNavClick("contact")} className="border-b-3 border-orange pb-1 px-2 mx-5 transition-all duration-200 hover:border-b-4 hover:cursor-pointer">
+          Om oss
         </a>
       </div>
-      <div className="mt-10 space-x-6">
+      {/* <div className="mt-10 space-x-6">
         <a href="mailto:" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faEnvelope} className="text-4xl hover:text-dark-purple hover:cursor-pointer" title="Email" />
         </a>
-      </div>
+      </div> */}
     </nav>
   );
 }

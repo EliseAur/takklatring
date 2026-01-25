@@ -85,7 +85,7 @@ export default function Header() {
             >
               <FontAwesomeIcon
                 icon={isOpen ? faTimes : faBars} // Toggle between faBars and faTimes
-                className="h-7 w-7 text-3xl text-darkblue"
+                className="text-2xl text-darkblue"
                 title={isOpen ? "Close menu" : "Open menu"}
               />
             </button>

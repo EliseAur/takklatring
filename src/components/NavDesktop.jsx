@@ -22,11 +22,11 @@ export default function NavDesktop() {
   const navigate = useNavigate();
 
   return (
-    <nav className="hidden lg:flex justify-end w-full flex-2/3 mt-2 font-headings text-lg">
-      <div className="flex-1/2 space-x-6 flex-grow mx-auto text-center font-bold">
+    <nav className="hidden lg:flex justify-end w-full mt-2 font-headings text-lg">
+      <div className="flex-1/2 space-x-6 flex-grow mx-auto text-right font-bold">
         <Link
           to="/"
-          className="border-b-3 border-orange pb-1 px-2 mx-5 transition-all duration-200 hover:border-b-4"
+          className="border-b-3 border-orange px-2 mx-5 transition-all duration-200 hover:border-b-4"
           onClick={(e) => {
             e.preventDefault();
             navigate("/", { state: { scrollTo: "projects" } });
@@ -36,30 +36,40 @@ export default function NavDesktop() {
         </Link>
         <Link
           to="/"
-          className="border-b-3 border-orange pb-1 px-2 mx-5 transition-all duration-200 hover:border-b-4"
+          className="border-b-3 border-orange px-2 mx-5 transition-all duration-200 hover:border-b-4"
           onClick={(e) => {
             e.preventDefault();
-            navigate("/", { state: { scrollTo: "about" } });
+            navigate("/", { state: { scrollTo: "booking" } });
           }}
         >
-          Blogg
+          Bestilling
         </Link>
         <Link
           to="/"
-          className="border-b-3 border-orange pb-1 px-2 mx-5 transition-all duration-200 hover:border-b-4"
+          className="border-b-3 border-orange px-2 mx-5 transition-all duration-200 hover:border-b-4"
           onClick={(e) => {
             e.preventDefault();
             navigate("/", { state: { scrollTo: "contact" } });
           }}
         >
-          Kontakt
+          Prosjekter
+        </Link>
+        <Link
+          to="/"
+          className="border-b-3 border-orange px-2 mx-5 transition-all duration-200 hover:border-b-4"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/", { state: { scrollTo: "contact" } });
+          }}
+        >
+          Om oss
         </Link>
       </div>
-      <div className="flex-1/2 space-x-4 text-right">
+      {/* <div className="flex-1/2 space-x-4 text-right">
         <a href="mailto:" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faEnvelope} className="text-xl hover:cursor-pointer" title="Email" />
         </a>
-      </div>
+      </div> */}
     </nav>
   );
 }
