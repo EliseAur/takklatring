@@ -14,12 +14,12 @@ export default function ProjectsPreview() {
         <div className="flex items-end justify-between gap-6 mb-10">
           <div>
             <h2 className="text-neutral-100 font-headings text-3xl md:text-4xl font-bold">Utvalgte prosjekter</h2>
-            <p className="text-neutral-300 mt-2 pb-1">Se noen eksempler på arbeid vi har gjort.</p>
+            <p className="text-neutral-300 md:text-lg mt-2 pb-1">Se noen eksempler på arbeid vi har gjort.</p>
           </div>
 
           {/* Desktop-knapp */}
-          <Link to="/prosjekter" className="hidden sm:inline-block border-b-3 border-orange pb-1 font-bold text-neutral-100 hover:border-b-4 transition-all">
-            Alle prosjekter
+          <Link to="/prosjekter" className="hidden sm:inline-block md:text-lg border-b-3 border-orange font-bold text-neutral-100 hover:border-b-4 transition-all">
+            Alle prosjekter →
           </Link>
         </div>
 
@@ -42,11 +42,8 @@ export default function ProjectsPreview() {
         </div>
         {/* Mobil-knapp */}
         <div className="mt-10 sm:hidden">
-          <Link
-            to="/prosjekter"
-            className="block text-center bg-orange text-darkblue text-md font-headings font-bold py-3 px-8 rounded-sm uppercase hover:cursor-pointer shadow-md hover:shadow-xl transition"
-          >
-            Alle prosjekter
+          <Link to="/prosjekter" className="inline-block md:text-lg border-b-3 border-orange font-bold text-neutral-100 hover:border-b-4 transition-all">
+            Alle prosjekter →
           </Link>
         </div>
       </div>

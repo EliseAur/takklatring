@@ -13,12 +13,12 @@ export default function ServicesPreview() {
         <div className="flex items-end justify-between gap-6 mb-10">
           <div>
             <h2 className="text-3xl md:text-4xl font-headings font-bold text-darkblue">Mest populære tjenester</h2>
-            <p className="text-neutral-700 mt-2 pb-1">Et lite utvalg av det vi gjør mest.</p>
+            <p className="text-neutral-700 md:text-lg mt-2 pb-1">Et lite utvalg av det vi gjør mest.</p>
           </div>
 
           {/* Desktop-knapp */}
-          <Link to="/tjenester" className="hidden sm:inline-block border-b-3 border-orange pb-1 font-semibold hover:border-b-4 transition-all">
-            Alle tjenester
+          <Link to="/tjenester" className="hidden sm:inline-block text-md md:text-lg border-b-3 border-orange font-bold hover:border-b-4 transition-all">
+            Alle tjenester →
           </Link>
         </div>
         <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
@@ -40,11 +40,8 @@ export default function ServicesPreview() {
         </div>
         {/* Mobil-knapp */}
         <div className="mt-10 sm:hidden">
-          <Link
-            to="/tjenester"
-            className="block text-center bg-orange text-darkblue text-md font-headings font-bold py-3 px-8 rounded-sm uppercase hover:cursor-pointer shadow-md hover:shadow-xl transition"
-          >
-            Alle tjenester
+          <Link to="/tjenester" className="inline-block border-b-3 border-orange font-semibold hover:border-b-4 transition-all">
+            Alle tjenester →
           </Link>
         </div>
       </div>
