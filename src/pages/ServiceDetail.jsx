@@ -1,3 +1,4 @@
+import { BookingSection, ReviewsSection, Footer } from "../components";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getServiceBySlug } from "../api/wp";
@@ -72,10 +73,10 @@ export default function ServiceDetail() {
             <div dangerouslySetInnerHTML={{ __html: service.content }} />
           </article>
         </div>
-        <div className="w-full px-3 mx-auto bg-darkblue">
+        {/* <div className="w-full px-3 mx-auto bg-darkblue">
           <div className="px-3 md:px-10 max-w-4xl mx-auto py-10">
             <h2 className="text-3xl md:text-4xl font-headings font-bold text-neutral-100 mb-4">Ønsker du et uforpliktende tilbud?</h2>
-            <p className="mt-2 text-neutral-300 text-lg">Send oss en kort beskrivelse, så tar vi kontakt og finner riktig løsning.</p>
+            <p className="mt-2 text-neutral-300 text-lg">Send oss en kort beskrivelse, så tar vi kontakt og finner riktig løsning for deg.</p>
             <a
               href="/kontakt"
               className="text-sm lg:text-lg mt-5 inline-block text-center bg-orange text-darkblue font-headings uppercase font-bold py-3 px-12 rounded-sm hover:cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] hover:shadow-xl hover:scale-[1.01]"
@@ -83,8 +84,11 @@ export default function ServiceDetail() {
               Få tilbud
             </a>
           </div>
-        </div>
+        </div> */}
       </section>
+      <BookingSection />
+      <ReviewsSection />
+      <Footer />
     </main>
   );
 }

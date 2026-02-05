@@ -1,4 +1,4 @@
-import { Hero, ServicesPreview, ProjectsPreview, BookingSection, ReviewsSection } from "../components";
+import { Hero, ServicesPreview, ProjectsPreview, BookingSection, ReviewsSection, Footer } from "../components";
 import { useFrontPageHero } from "../hooks/useFrontPageHero";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -42,9 +42,7 @@ export default function Home() {
       <BookingSection />
       <ProjectsPreview />
       <ReviewsSection />
-      {/* <ServicesSection />
-      <BlogSection />
-      <ReviewSection /> */}
+      <Footer />
     </>
   );
 }

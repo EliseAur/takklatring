@@ -6,16 +6,6 @@ import ServicesPreview from "./ServicesPreview";
 import ProjectsPreview from "./ProjectsPreview";
 import BookingSection from "./BookingSection";
 import ReviewsSection from "./ReviewsSection";
-// import Footer from "./Footer";
+import Footer from "./Footer";
 
-export {
-  Header,
-  NavDesktop,
-  NavMobile,
-  Hero,
-  ServicesPreview,
-  ProjectsPreview,
-  BookingSection,
-  ReviewsSection,
-  // Footer,
-};
+export { Header, NavDesktop, NavMobile, Hero, ServicesPreview, ProjectsPreview, BookingSection, ReviewsSection, Footer };
