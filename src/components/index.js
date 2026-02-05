@@ -5,6 +5,7 @@ import Hero from "./Hero";
 import ServicesPreview from "./ServicesPreview";
 import ProjectsPreview from "./ProjectsPreview";
 import BookingSection from "./BookingSection";
+import ReviewsSection from "./ReviewsSection";
 // import Footer from "./Footer";
 
 export {
@@ -15,5 +16,6 @@ export {
   ServicesPreview,
   ProjectsPreview,
   BookingSection,
+  ReviewsSection,
   // Footer,
 };
