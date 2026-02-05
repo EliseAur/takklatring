@@ -1,4 +1,4 @@
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+// import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 
@@ -36,7 +36,7 @@ export default function NavMobile({ onLinkClick }) {
         </a>
 
         <a href="#about" onClick={handleNavClick("about")} className="border-b-3 border-orange pb-1 px-2 mx-5 transition-all duration-200 hover:border-b-4 hover:cursor-pointer">
-          Bestilling
+          Få tilbud
         </a>
 
         <a href="#contact" onClick={handleNavClick("contact")} className="border-b-3 border-orange pb-1 px-2 mx-5 transition-all duration-200 hover:border-b-4 hover:cursor-pointer">

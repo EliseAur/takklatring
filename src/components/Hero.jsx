@@ -32,18 +32,12 @@ export default function Hero({ hero }) {
     <section id="top" className="overflow-hidden w-full min-h-[calc(100vh-89px)] lg:min-h-[calc(100vh-104px)]">
       <div className="heroImage relative flex min-h-[calc(100vh-89px)] lg:min-h-[calc(100vh-104px)]">
         <img src={imageSrc} alt={imageAlt} className="absolute inset-0 h-full w-full object-cover object-center md:object-right bg-darkblue origin-right lg:pl-96" />
-        {/* Bilde sunset med drill */}
-        {/* <img src={imageSrc} alt={imageAlt} className="absolute inset-0 h-full w-full object-cover object-[40%_80%] md:object-right bg-darkblue origin-right lg:pl-50" /> */}
         <div className="absolute inset-0 bg-gradient-to-b from-darkblue/60 via-darkblue/60 to-darkblue/60 lg:bg-gradient-to-r lg:from-darkblue/100 lg:via-darkblue/70 lg:via-[25%] lg:to-transparent lg:ml-96" />
-        {/* Overlay sunset med drill */}
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-darkblue/100 via-darkblue/50 to-darkblue/25 lg:bg-gradient-to-r lg:from-darkblue/100 lg:via-darkblue/70 lg:via-[40%] lg:to-transparent lg:ml-96" /> */}
 
         <div className="relative z-20 my-auto flex flex-col md:mx-20 px-7 md:px-0 h-full max-w-[500px] md:max-w-[540px]">
           <h1 className="text-neutral-100 font-headings text-5xl md:text-6xl mb-2 lg:mb-4 break-words md:leading-tight font-bold tracking-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">{title}</h1>
-
-          <p className="text-neutral-100 font-body uppercase font-semibold text-md lg:text-lg mb-3 md:mb-5 border-b-3 border-orange pb-3 md:pb-5 max-w-[225px] lg:max-w-[255px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
-            {subtitle}
-          </p>
+          <p className="text-neutral-100 font-body uppercase font-semibold text-md lg:text-lg max-w-[225px] lg:max-w-[255px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">{subtitle}</p>
+          <div className="my-3 h-[3px] w-20 bg-orange rounded-sm" />
 
           <p className="text-neutral-100 hidden md:block font-body sm:text-md md:text-lg mb-7 font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">{descriptionDesktop}</p>
           <p className="text-neutral-100 md:hidden font-body text-sm md:text-lg mb-6 font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">{descriptionMobile}</p>
@@ -61,7 +55,7 @@ export default function Hero({ hero }) {
               href=""
               className="flex-1 text-center bg-orange text-darkblue font-headings uppercase text-md lg:text-lg font-bold py-3 px-6 rounded-sm hover:cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] hover:shadow-xl hover:scale-[1.02]"
             >
-              Bestilling
+              Få tilbud
             </a>
             <a
               href=""
