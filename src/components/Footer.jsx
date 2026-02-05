@@ -3,15 +3,15 @@ export default function Footer() {
     <footer className="bg-darkblue text-neutral-200">
       <div className="max-w-6xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-3">
         {/* Logo / firma */}
-        <div>
+        <div className="md:mx-auto">
           <h3 className="font-headings text-2xl font-bold text-neutral-100 mb-2">Tak og FasadeKlatring AS</h3>
           <p className=" text-neutral-400 max-w-xs">Alt av håndverk i høyden. Profesjonell og trygg utførelse av arbeid på tak og fasader.</p>
         </div>
 
         {/* Navigasjon */}
-        <nav>
-          <h4 className="font-headings text-lg font-bold text-neutral-100 mb-2 md:pl-14">Navigasjon</h4>
-          <ul className="space-y-2 md:pl-14">
+        <nav className="md:mx-auto">
+          <h4 className="font-headings text-lg font-bold text-neutral-100 mb-2">Navigasjon</h4>
+          <ul className="space-y-2">
             <li>
               <a href="/tjenester" className="hover:text-orange transition">
                 Tjenester
@@ -36,7 +36,7 @@ export default function Footer() {
         </nav>
 
         {/* Kontakt */}
-        <div>
+        <div className="md:mx-auto">
           <h4 className="font-headings text-lg font-bold text-neutral-100 mb-2">Kontakt</h4>
           <ul className="space-y-2 text-neutral-400">
             <li>📞 99 99 99 99</li>

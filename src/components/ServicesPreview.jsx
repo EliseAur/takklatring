@@ -8,7 +8,7 @@ export default function ServicesPreview() {
   if (error) return <div>Kunne ikke hente tjenester fra WordPress.</div>;
 
   return (
-    <section id="services" className="py-16 bg-neutral-100">
+    <section id="services" className="py-16 ">
       <div className="max-w-7xl mx-auto px-7 md:px-20">
         <div className="flex items-end justify-between gap-6 mb-10">
           <div>

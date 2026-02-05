@@ -67,8 +67,8 @@ export default function ServiceDetail() {
       )}
 
       {/* Content */}
-      <section className="w-full bg-neutral-100">
-        <div className="max-w-6xl mx-auto px-3 py-6">
+      <section className="w-full">
+        <div className="max-w-6xl mx-auto px-3 pt-0 pb-6">
           <article className="wp-content max-w-4xl mx-auto px-3 md:px-10">
             <div dangerouslySetInnerHTML={{ __html: service.content }} />
           </article>

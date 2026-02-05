@@ -24,7 +24,7 @@ body {
 }
 
 body {
-  background-color: var(--color-grey);
+  background-color: var(--color-neutral-100);
 }
 
 @layer components {
@@ -47,7 +47,7 @@ body {
   }
 
   .wp-content blockquote {
-    @apply rounded-sm italic my-8 text-lg bg-darkblue/5 p-4 border-l-4 border-orange pl-3;
+    @apply rounded-sm italic my-8 text-lg bg-darkblue/4 p-4 border-l-4 border-orange pl-3;
   }
 
   .wp-content img {

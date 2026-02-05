@@ -12,7 +12,7 @@ export default function ReviewsSection() {
   ];
 
   return (
-    <section className="py-20 bg-neutral-100">
+    <section className="py-20 ">
       <div className="max-w-6xl mx-auto px-6">
         <header className="mb-12 text-center">
           <h2 className="text-3xl md:text-4xl font-headings font-bold text-darkblue">Hva kundene sier</h2>
