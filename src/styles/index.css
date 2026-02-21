@@ -42,12 +42,20 @@ body {
     @apply list-disc pl-6 mb-6 marker:text-orange text-neutral-800;
   }
 
+  .wp-content ol {
+    @apply list-decimal pl-6 mb-6 marker:text-orange marker:font-bold;
+  }
+
   .wp-content li {
     @apply mb-0.5;
   }
 
   .wp-content blockquote {
     @apply rounded-sm italic my-8 text-lg bg-darkblue/4 p-4 border-l-4 border-orange pl-3;
+  }
+
+  .wp-content blockquote p {
+    @apply mb-0;
   }
 
   .wp-content img {
@@ -74,15 +82,17 @@ body {
 
   /* Hver kolonne = “kort” */
   .wp-content .wp-block-column {
-    @apply flex-col flex-1 bg-darkblue border-l-4 border-orange rounded-md p-6 md:p-8;
+    @apply flex-col flex-1 bg-darkblue border-l-4 border-orange rounded-md pt-6 px-6 pb-3 md:pt-8 md:px-8 md:pb-4;
   }
 
-  .wp-content .wp-block-column .wp-block-group ul {
+  /* .wp-content .wp-block-column .wp-block-group ul {
     @apply mb-0;
-  }
+  } */
 
   /* Overskrift i kolonnene */
-  .wp-content .wp-block-column h4 {
+
+  .wp-content .wp-block-column h4,
+  .wp-content .wp-block-column p strong {
     @apply text-lg font-headings text-neutral-100 mb-4 block;
   }
 
@@ -106,7 +116,5 @@ body {
     @apply text-darkblue underline decoration-orange decoration-2 underline-offset-4;
   }
 
-  .wp-content ol {
-    @apply list-decimal pl-6 mb-6 marker:text-orange;
-  } */
+   */
 }
