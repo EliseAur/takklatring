@@ -10,7 +10,7 @@ import { getFooterData, getFrontPageHero } from "./api/wp";
  * App component sets up the main application structure and routing.
  *
  * Features:
- * - Provides routing for the Home and ProjectDetail pages
+ * - Provides routing for Home and ServiceDetail pages
  * - Renders Header and Footer on all pages
  * - Wraps content in a Router for navigation
  *
