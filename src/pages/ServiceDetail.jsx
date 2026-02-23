@@ -74,7 +74,6 @@ export default function ServiceDetail() {
       </section>
       <BookingSection />
       <ReviewsSection />
-      <Footer />
     </main>
   );
 }

@@ -44,6 +44,21 @@ export async function getFrontPageHero() {
   };
 }
 
+export async function getFooterData() {
+  const res = await fetch(`${WP_BASE}/pages?slug=footer&_fields=acf`);
+  if (!res.ok) throw new Error("Kunne ikke hente Footer-siden fra WP");
+
+  const data = await res.json();
+  const acf = data?.[0]?.acf;
+  if (!acf) throw new Error("Fant ikke ACF-data på Footer-siden");
+
+  return {
+    phone_number: acf.phone_number ?? "",
+    email: acf.email ?? "",
+    sted: acf.sted ?? "",
+  };
+}
+
 // Henter alle tjenester (med featured image i _embed)
 export async function getServices({ perPage = 100 } = {}) {
   const res = await fetch(`${WP_BASE}/tjenester?per_page=${perPage}&_embed=1`);
