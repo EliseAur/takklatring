@@ -1,14 +1,14 @@
 export default function ReviewsSection() {
   // Midlertidige manuelle omtaler
   const reviews = [
-    {
-      quote: "Veldig profesjonelt utført arbeid. God kommunikasjon hele veien og ryddig gjennomføring.",
-      name: "Kunde i Oslo",
-    },
-    {
-      quote: "Trygg og effektiv befaring. Fikk gode råd og et tydelig forslag til tiltak.",
-      name: "Borettslag",
-    },
+    // {
+    //   quote: "Veldig profesjonelt utført arbeid. God kommunikasjon hele veien og ryddig gjennomføring.",
+    //   name: "Kunde i Oslo",
+    // },
+    // {
+    //   quote: "Trygg og effektiv befaring. Fikk gode råd og et tydelig forslag til tiltak.",
+    //   name: "Borettslag",
+    // },
   ];
 
   return (
@@ -29,8 +29,8 @@ export default function ReviewsSection() {
             ))}
           </div>
         ) : (
-          <div className="max-w-2xl mx-auto text-center bg-white p-8 rounded-md shadow-sm">
-            <p className="text-neutral-800">Vi jobber hver dag for fornøyde kunder – omtaler kommer snart.</p>
+          <div className="max-w-2xl mx-auto text-center bg-white p-8 rounded-md shadow-sm border-l-4 border-orange">
+            <p className="text-neutral-800 md:text-lg">Vi jobber hver dag for fornøyde kunder – omtaler kommer snart.</p>
           </div>
         )}
       </div>
