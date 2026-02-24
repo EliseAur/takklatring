@@ -70,7 +70,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full z-50 sticky top-0 bg-neutral-100 text-darkblue">
+    <header className="w-full z-50 sticky top-0 bg-neutral-100 text-darkblue shadow-sm">
       <div className="flex py-3 px-3 sm:pr-5 mx-auto">
         <div className="flex w-full justify-center items-center">
           <Link to="/" onClick={handleLogoClick} className="logo w-[200px] flex-1/3 hover:cursor-pointer tracking-tight">
@@ -85,7 +85,7 @@ export default function Header() {
             >
               <FontAwesomeIcon
                 icon={isOpen ? faTimes : faBars} // Toggle between faBars and faTimes
-                className="h-7 w-7 text-3xl text-darkblue"
+                className="text-2xl text-darkblue"
                 title={isOpen ? "Close menu" : "Open menu"}
               />
             </button>
