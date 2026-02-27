@@ -1,10 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { usePopularServices } from "../hooks/usePopularServices";
+import { useContext } from "react";
+import { LoadingContext } from "../context/LoadingContext";
 
 export default function ServicesPreview() {
-  const { services, loading, error } = usePopularServices(3);
+  const navigate = useNavigate();
+  const { services, error } = usePopularServices(3);
+  const { setIsLoading } = useContext(LoadingContext);
 
-  if (loading) return null; // evt. legg inn loader senere
+  const handleServiceClick = (e, service) => {
+    if (!service?.slug) return;
+    setIsLoading(true); // start loader før navigasjon
+    navigate(`/tjenester/${service.slug}`);
+  };
+
+  const handleAllServicesClick = () => {
+    setIsLoading(true);
+    navigate("/tjenester");
+  };
+
+  // if (loading) return null; // evt. legg inn loader senere
   if (error) return <div>Kunne ikke hente tjenester fra WordPress.</div>;
 
   return (
@@ -17,13 +32,18 @@ export default function ServicesPreview() {
           </div>
 
           {/* Desktop-knapp */}
-          <Link to="/tjenester" className="hidden sm:inline-block text-md md:text-lg border-b-3 border-orange font-bold hover:border-b-4 transition-all">
+          <Link to="/tjenester" onClick={handleAllServicesClick} className="hidden sm:inline-block text-md md:text-lg border-b-3 border-orange font-bold hover:border-b-4 transition-all">
             Alle tjenester →
           </Link>
         </div>
         <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
-            <Link key={service.id} to={`/tjenester/${service.slug}`} className="group bg-white rounded-sm shadow-md overflow-hidden hover:shadow-lg transition flex flex-col h-full">
+            <Link
+              key={service.id}
+              to={`/tjenester/${service.slug}`}
+              onClick={(e) => handleServiceClick(e, service)}
+              className="group bg-white rounded-sm shadow-md overflow-hidden hover:shadow-lg transition flex flex-col h-full"
+            >
               {service.image_url && <img src={service.image_url} alt={service.image_alt || ""} className="h-48 w-full object-cover group-hover:scale-[1.02] transition-transform duration-300" />}
 
               <div className="p-6 flex flex-col flex-1">

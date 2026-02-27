@@ -1,23 +1,10 @@
-import { BookingSection, ReviewsSection, Footer } from "../components";
-import { useEffect, useState } from "react";
+import { BookingSection, ReviewsSection } from "../components";
 import { useParams } from "react-router-dom";
-import { getServiceBySlug } from "../api/wp";
+import { useServiceDetail } from "../hooks/useServiceDetail";
 
 export default function ServiceDetail() {
   const { slug } = useParams();
-  const [service, setService] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const data = await getServiceBySlug(slug);
-        setService(data);
-      } catch (e) {
-        setError(e.message);
-      }
-    })();
-  }, [slug]);
+  const { service, error } = useServiceDetail(slug);
 
   if (error) return <div>Feil: {error}</div>;
   if (!service) return null;
@@ -25,7 +12,7 @@ export default function ServiceDetail() {
   return (
     <main>
       {/* Hero / header */}
-      <section className="bg-darkblue">
+      <section id="top" className="bg-darkblue">
         <div className="max-w-4xl mx-auto md:px-6 md:py-12 lg:py-16 grid gap-5 lg:grid-cols-2 lg:items-center">
           {/* Text */}
           <div className="max-w-4xl px-5 pt-8 pb-4 mx-auto md:px-14 lg:px-4 lg:pb-5 lg:pt-0">

@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Header, Footer } from "./components";
+import { Header, Footer, GlobalLoadingSpinner } from "./components";
+import { LoadingProvider } from "./context/LoadingProvider";
 import Home from "./pages/Home";
 import ServiceDetail from "./pages/ServiceDetail";
 import { useEffect, useState } from "react";
@@ -12,6 +13,7 @@ import { getFooterData, getFrontPageHero } from "./api/wp";
  * Features:
  * - Provides routing for Home and ServiceDetail pages
  * - Renders Header and Footer on all pages
+ * - Displays a global loading spinner during data fetching
  * - Wraps content in a Router for navigation
  *
  * @component
@@ -34,16 +36,19 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <Header />
-      <main className="flex flex-col">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/tjenester/:slug" element={<ServiceDetail />} />
-        </Routes>
-      </main>
-      <Footer footer={footer} hero={hero} />
-    </Router>
+    <LoadingProvider>
+      <Router>
+        <GlobalLoadingSpinner />
+        <Header />
+        <main className="flex flex-col min-h-screen">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/tjenester/:slug" element={<ServiceDetail />} />
+          </Routes>
+        </main>
+        <Footer footer={footer} hero={hero} />
+      </Router>
+    </LoadingProvider>
   );
 }
 
