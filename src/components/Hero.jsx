@@ -1,4 +1,4 @@
-import fallbackHeroImage from "../images/hero-sunset.jpg";
+import fallbackHeroImage from "../images/hero-img-1920-4.jpg";
 import iconVerified from "../images/icon-verified-orange.svg";
 
 /**

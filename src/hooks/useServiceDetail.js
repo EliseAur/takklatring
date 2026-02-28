@@ -1,9 +1,9 @@
 import { useEffect, useState, useContext } from "react";
-import { getFrontPageHero } from "../api/wp";
+import { getServiceBySlug } from "../api/wp";
 import { LoadingContext } from "../context/LoadingContext";
 
-export function useFrontPageHero() {
-  const [hero, setHero] = useState(null);
+export function useServiceDetail(slug) {
+  const [service, setService] = useState(null);
   const [error, setError] = useState(null);
   const { setIsLoading } = useContext(LoadingContext);
 
@@ -12,14 +12,14 @@ export function useFrontPageHero() {
 
     (async () => {
       try {
-        setIsLoading(true); // Start global loader
-        const data = await getFrontPageHero();
-        if (alive) setHero(data);
+        setIsLoading(true);
+        const data = await getServiceBySlug(slug);
+        if (alive) setService(data);
       } catch (e) {
-        if (alive) setError(e);
+        if (alive) setError(e?.message || "Ukjent feil");
       } finally {
         if (alive) {
-          setIsLoading(false); // Stop global loader4
+          setIsLoading(false);
           // Scroll til topp ETTER data er lastet
           window.scrollTo(0, 0);
         }
@@ -29,7 +29,7 @@ export function useFrontPageHero() {
     return () => {
       alive = false;
     };
-  }, [setIsLoading]);
+  }, [slug, setIsLoading]);
 
-  return { hero, error };
+  return { service, error };
 }

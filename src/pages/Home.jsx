@@ -1,7 +1,7 @@
 import { Hero, ServicesPreview, ProjectsPreview, BookingSection, ReviewsSection } from "../components";
 import { useFrontPageHero } from "../hooks/useFrontPageHero";
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+// import { useLocation } from "react-router-dom";
+// import { useState, useEffect } from "react";
 
 /**
  * Home page component that renders the hero and other main sections of the website.
@@ -16,20 +16,16 @@ import { useEffect } from "react";
  * )
  */
 export default function Home() {
-  const location = useLocation();
-  const { hero, loading, error } = useFrontPageHero();
+  const { hero, error } = useFrontPageHero();
 
-  useEffect(() => {
-    if (location.state?.scrollTo) {
-      const el = document.getElementById(location.state.scrollTo);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  }, [location.state]);
+  // Sjekk om denne har en effekt på scroll-oppførselen ved innlastning av siden
+  // Vurder om dette bør flyttes til App.jsx eller håndteres av en ScrollToTop-komponent
+  // useLayoutEffect(() => {
+  //   console.log("Home mounted, before scroll:", window.scrollY);
+  //   window.scrollTo(0, 0);
+  //   console.log("Home mounted, after scroll:", window.scrollY);
+  // }, []);
 
-  // Viktig: ikke render Hero før data finnes
-  if (loading) return null; // evt. en loader
   if (error) {
     console.error(error);
     return <div>Kunne ikke hente innhold fra WordPress.</div>;
