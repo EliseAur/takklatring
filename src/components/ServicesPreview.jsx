@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { usePopularServices } from "../hooks/usePopularServices";
 import { useContext } from "react";
 import { LoadingContext } from "../context/LoadingContext";
+import { ServiceCard } from "./index";
 
 export default function ServicesPreview() {
   const navigate = useNavigate();
@@ -36,28 +37,7 @@ export default function ServicesPreview() {
             Alle tjenester →
           </Link>
         </div>
-        <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <Link
-              key={service.id}
-              to={`/tjenester/${service.slug}`}
-              onClick={(e) => handleServiceClick(e, service)}
-              className="group bg-white rounded-sm shadow-md overflow-hidden hover:shadow-lg transition flex flex-col h-full"
-            >
-              {service.image_url && <img src={service.image_url} alt={service.image_alt || ""} className="h-48 w-full object-cover group-hover:scale-[1.02] transition-transform duration-300" />}
-
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="font-bold text-xl text-darkblue mb-2">{service.title}</h3>
-
-                {/* {service?.acf?.tjeneste_subtitle1 && <p className="text-neutral-800 font-bold mb-2">{service.acf.tjeneste_subtitle1}</p>} */}
-
-                {service?.acf?.tjeneste_short_description && <p className="text-neutral-800 break-words mb-2 line-clamp-2">{service.acf.tjeneste_short_description}</p>}
-
-                <p className="font-bold text-darkblue mt-auto pt-2">Les mer →</p>
-              </div>
-            </Link>
-          ))}
-        </div>
+        <ServiceCard services={services} onServiceClick={handleServiceClick} />
         {/* Mobil-knapp */}
         <div className="mt-10 sm:hidden">
           <Link to="/tjenester" className="inline-block border-b-3 border-orange font-semibold hover:border-b-4 transition-all">
