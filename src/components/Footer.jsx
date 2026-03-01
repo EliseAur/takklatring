@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone, faAt, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faPhone, faAt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 export default function Footer({ hero, footer }) {
   const title = hero?.hero_title || "Tak og FasadeKlatring AS";
@@ -7,7 +8,6 @@ export default function Footer({ hero, footer }) {
   const descriptionMobile = hero?.hero_description_mobile || "Vi tilbyr profesjonell og trygg utførelse av arbeid på tak og fasader.";
   const phoneNumber = footer?.phone_number || "Kan ikke hente telefonnummer";
   const email = footer?.email || "Kan ikke hente e-post";
-  const address = footer?.sted || "Kan ikke hente adresse";
 
   return (
     <footer className="bg-darkblue text-neutral-400">
@@ -52,15 +52,21 @@ export default function Footer({ hero, footer }) {
           <ul className="space-y-2">
             <li>
               <FontAwesomeIcon icon={faPhone} className="text-xl text-orange mr-2" />
-              {phoneNumber}
+              <a href={`tel:${phoneNumber}`} className="hover:text-orange transition">
+                {phoneNumber}
+              </a>
             </li>
             <li>
               <FontAwesomeIcon icon={faAt} className="text-xl text-orange mr-2" />
-              {email}
+              <a href={`mailto:${email}`} className="hover:text-orange transition">
+                {email}
+              </a>
             </li>
             <li>
-              <FontAwesomeIcon icon={faLocationDot} className="text-xl text-orange mr-2" />
-              {address}
+              <FontAwesomeIcon icon={faEnvelope} className="text-xl text-orange mr-2 " />
+              <Link to="/kontakt" className="hover:text-orange transition">
+                Kontaktskjema
+              </Link>
             </li>
           </ul>
         </div>
