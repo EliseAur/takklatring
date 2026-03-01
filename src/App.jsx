@@ -3,6 +3,7 @@ import { Header, Footer, GlobalLoadingSpinner } from "./components";
 import { LoadingProvider } from "./context/LoadingProvider";
 import Home from "./pages/Home";
 import ServiceDetail from "./pages/ServiceDetail";
+import Services from "./pages/Services";
 import { useEffect, useState } from "react";
 import { getFooterData, getFrontPageHero } from "./api/wp";
 // import ProjectDetail from "./pages/ProjectDetail";
@@ -43,6 +44,7 @@ function App() {
         <main className="flex flex-col min-h-screen">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/tjenester" element={<Services />} />
             <Route path="/tjenester/:slug" element={<ServiceDetail />} />
           </Routes>
         </main>

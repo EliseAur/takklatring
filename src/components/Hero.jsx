@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import fallbackHeroImage from "../images/hero-img-1920-4.jpg";
 import iconVerified from "../images/icon-verified-orange.svg";
 
@@ -51,18 +52,18 @@ export default function Hero({ hero }) {
           </div>
 
           <div className="flex flex-row gap-2 sm:gap-5">
-            <a
-              href=""
+            <Link
+              to="/kontakt"
               className="flex-1 text-center bg-orange text-darkblue font-headings uppercase text-md lg:text-lg font-bold py-3 px-6 rounded-sm hover:cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] hover:shadow-xl hover:scale-[1.02]"
             >
               Få tilbud
-            </a>
-            <a
-              href=""
+            </Link>
+            <Link
+              to="/tjenester"
               className="flex-1 text-center bg-neutral-100 text-darkblue font-headings uppercase text-md lg:text-lg font-bold py-3 px-6 rounded-sm hover:cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] hover:shadow-xl hover:scale-[1.02]"
             >
               Tjenester
-            </a>
+            </Link>
           </div>
         </div>
       </div>
