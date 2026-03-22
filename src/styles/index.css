@@ -62,17 +62,17 @@ body {
     @apply rounded-md shadow-md;
   }
 
-  /* WordPress “Gallery” */
+  /* WordPress Gallery */
   .wp-content .wp-block-gallery {
-    @apply my-10 flex flex-col md:flex-row gap-2;
+    @apply my-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
   }
 
   .wp-content .wp-block-gallery .wp-block-image {
-    @apply w-full rounded-md max-w-[410px];
+    @apply w-full overflow-hidden rounded-md;
   }
 
   .wp-content .wp-block-gallery .wp-block-image img {
-    @apply h-70 md:h-100 lg:overflow-visible object-cover;
+    @apply w-full h-full object-cover aspect-[3/4];
   }
 
   /* Wrapper for columns */
