@@ -1,21 +1,58 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useMemo, useState } from "react";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
 import { BookingSection, ReviewsSection } from "../components";
-import { useParams } from "react-router-dom";
 import { useServiceDetail } from "../hooks/useServiceDetail";
 
 export default function ServiceDetail() {
   const { slug } = useParams();
   const { service, error } = useServiceDetail(slug);
 
+  const [lightboxIndex, setLightboxIndex] = useState(-1);
+
+  const slides = useMemo(() => {
+    if (!service?.content) return [];
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(service.content, "text/html");
+
+    const figures = Array.from(doc.querySelectorAll(".wp-block-gallery .wp-block-image"));
+
+    return figures.map((figure) => {
+      const img = figure.querySelector("img");
+      const caption = figure.querySelector("figcaption");
+
+      return {
+        src: img?.getAttribute("src") || img?.src,
+        alt: img?.getAttribute("alt") || "",
+        caption: caption?.textContent || "",
+      };
+    });
+  }, [service?.content]);
+
+  const handleContentClick = (e) => {
+    const figure = e.target.closest(".wp-block-gallery .wp-block-image");
+    if (!figure) return;
+
+    const allFigures = Array.from(e.currentTarget.querySelectorAll(".wp-block-gallery .wp-block-image"));
+
+    const clickedIndex = allFigures.findIndex((item) => item === figure);
+
+    if (clickedIndex >= 0) {
+      e.preventDefault();
+      setLightboxIndex(clickedIndex);
+    }
+  };
+
   if (error) return <div>Feil: {error}</div>;
   if (!service) return null;
 
   return (
     <main>
-      {/* Hero / header */}
       <section id="top" className="bg-darkblue">
         <div className="max-w-4xl mx-auto md:px-6 md:py-12 lg:py-16 grid gap-5 lg:grid-cols-2 lg:items-center">
-          {/* Text */}
           <div className="max-w-4xl px-5 pt-8 pb-4 mx-auto md:px-14 lg:px-4 lg:pb-5 lg:pt-0">
             <p className="text-orange font-bold uppercase tracking-wide">Tjeneste</p>
             <h1 className="text-4xl md:text-[44px] font-headings font-bold text-neutral-100 mt-2">{service.title}</h1>
@@ -23,7 +60,7 @@ export default function ServiceDetail() {
 
             {service?.acf?.tjeneste_short_description && <p className="mt-3 text-lg text-neutral-300">{service.acf.tjeneste_short_description}</p>}
 
-            <a href="#content" className="mt-3 inline-block text-white font-bold hover:pointer-cursor">
+            <a href="#content" className="mt-3 inline-block text-white font-bold cursor-pointer">
               Les mer →
             </a>
 
@@ -43,7 +80,7 @@ export default function ServiceDetail() {
               </Link>
             </div>
           </div>
-          {/* Image */}
+
           {service.image_url && (
             <div className="overflow-hidden md:px-14 lg:px-4">
               <img src={service.image_url} alt={service.image_alt || ""} className="w-full aspect-[4/3] sm:aspect-[3/4] object-cover object-center max-h-[500px] md:rounded-md md:shadow-md" />
@@ -52,16 +89,33 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      {/* Content */}
       <section id="content" className="scroll-mt-[125px] lg:scroll-mt-[100px] w-full bg-neutral-100">
         <div className="max-w-4xl mx-auto px-6 pt-0 lg:pt-6 pb-6">
-          <article className="wp-content max-w-4xl mx-auto md:px-14 my-10 lg:px-4">
+          <article className="wp-content max-w-4xl mx-auto md:px-14 my-10 lg:px-4" onClick={handleContentClick}>
             <div dangerouslySetInnerHTML={{ __html: service.content }} />
           </article>
         </div>
       </section>
       <BookingSection />
       <ReviewsSection />
+      <Lightbox
+        open={lightboxIndex >= 0}
+        close={() => setLightboxIndex(-1)}
+        index={lightboxIndex}
+        slides={slides}
+        render={{
+          slide: ({ slide }) => (
+            <div className="flex justify-center items-center h-full w-full">
+              {/* Wrapper som styrer bredden */}
+              <div className="flex flex-col items-center max-w-[90vw]">
+                <img src={slide.src} alt={slide.alt} className="max-h-[80vh] w-auto object-contain rounded-t-sm" />
+
+                {slide.caption && <div className="w-full bg-darkblue text-white text-sm px-4 py-2 text-center rounded-b-sm">{slide.caption}</div>}
+              </div>
+            </div>
+          ),
+        }}
+      />
     </main>
   );
 }
