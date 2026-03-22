@@ -61,7 +61,7 @@ export async function getFooterData() {
 
 // Henter alle tjenester (med featured image i _embed)
 export async function getServices({ perPage = 100 } = {}) {
-  const res = await fetch(`${WP_BASE}/tjenester?per_page=${perPage}&_embed=1`);
+  const res = await fetch(`${WP_BASE}/tjenester?per_page=${perPage}&orderby=menu_order&order=asc&_embed=1`);
   if (!res.ok) throw new Error("Kunne ikke hente tjenester fra WP");
 
   const data = await res.json();
