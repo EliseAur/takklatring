@@ -31,7 +31,7 @@ export default function ProjectsPreview() {
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="font-bold text-xl text-darkblue mb-2">{project.title}</h3>
 
-                {project?.acf?.project_subtitle && <p className="text-neutral-800 font-bold mb-2">{project.acf.project_subtitle}</p>}
+                {/* {project?.acf?.project_subtitle && <p className="text-neutral-800 font-bold mb-2">{project.acf.project_subtitle}</p>} */}
 
                 {project?.acf?.project_short_text && <p className="text-neutral-700 break-words mb-2 line-clamp-2">{project.acf.project_short_text}</p>}
 

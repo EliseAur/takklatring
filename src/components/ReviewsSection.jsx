@@ -1,3 +1,5 @@
+import { MessageCard } from "./index";
+
 export default function ReviewsSection() {
   // Midlertidige manuelle omtaler
   const reviews = [
@@ -29,8 +31,8 @@ export default function ReviewsSection() {
             ))}
           </div>
         ) : (
-          <div className="max-w-2xl mx-auto text-center bg-white p-8 rounded-md shadow-sm border-l-4 border-orange">
-            <p className="text-neutral-800 md:text-lg">Vi jobber hver dag for fornøyde kunder – omtaler kommer snart.</p>
+          <div className="flex justify-center">
+            <MessageCard message="Vi jobber hver dag for fornøyde kunder – omtaler kommer snart." />
           </div>
         )}
       </div>
