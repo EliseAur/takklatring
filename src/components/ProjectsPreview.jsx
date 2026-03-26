@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useFeaturedProjects } from "../hooks/useFeaturedProjects";
+import { CardItem } from "./index";
 
 export default function ProjectsPreview() {
   const { projects, loading, error } = useFeaturedProjects({ limit: 3 });
@@ -32,33 +33,18 @@ export default function ProjectsPreview() {
 
         <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-            <Link
+            <CardItem
               key={project.id}
               to={`/prosjekter/${project.slug}`}
-              className="group bg-white rounded-sm shadow-lg overflow-hidden hover:shadow-xl transition flex flex-col h-full"
-            >
-              {project.image_url && (
-                <img
-                  src={project.image_url}
-                  alt={project.image_alt || ""}
-                  className="h-48 w-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
-                />
-              )}
-
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="font-bold text-xl text-darkblue mb-2">{project.title}</h3>
-
-                {project?.acf?.project_short_text && (
-                  <p className="text-neutral-700 break-words mb-2 line-clamp-2">
-                    {project.acf.project_short_text}
-                  </p>
-                )}
-
-                <p className="font-bold text-darkblue mt-auto pt-2">Se prosjekt →</p>
-              </div>
-            </Link>
+              imageUrl={project.image_url}
+              imageAlt={project.image_alt || ""}
+              title={project.title}
+              description={project?.acf?.project_short_text}
+              ctaText="Se prosjekt →"
+            />
           ))}
         </div>
+
         {/* Mobil-knapp */}
         <div className="mt-10 sm:hidden">
           <Link

@@ -50,26 +50,39 @@ export default function Services() {
         filteredItems={filtered}
         renderItems={(items) => (
           <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-            {items.map((service) => {
-              const hasSlug = Boolean(service?.slug);
-              const to = hasSlug ? `/tjenester/${service.slug}` : "#";
-
-              return (
-                <CardItem
-                  key={service.id}
-                  to={to}
-                  imageUrl={service.image_url}
-                  imageAlt={service.image_alt || ""}
-                  title={service.title}
-                  description={service?.acf?.tjeneste_short_description}
-                  ctaText="Les mer →"
-                  onClick={(e) => {
-                    if (!hasSlug) e.preventDefault();
-                  }}
-                />
-              );
-            })}
+            {items.map((service) => (
+              <CardItem
+                key={service.id}
+                to={`/tjenester/${service.slug}`}
+                imageUrl={service.image_url}
+                imageAlt={service.image_alt || ""}
+                title={service.title}
+                description={service?.acf?.tjeneste_short_description}
+                ctaText="Les mer →"
+              />
+            ))}
           </div>
+          // <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+          //   {items.map((service) => {
+          //     const hasSlug = Boolean(service?.slug);
+          //     const to = hasSlug ? `/tjenester/${service.slug}` : "#";
+
+          //     return (
+          //       <CardItem
+          //         key={service.id}
+          //         to={to}
+          //         imageUrl={service.image_url}
+          //         imageAlt={service.image_alt || ""}
+          //         title={service.title}
+          //         description={service?.acf?.tjeneste_short_description}
+          //         ctaText="Les mer →"
+          //         onClick={(e) => {
+          //           if (!hasSlug) e.preventDefault();
+          //         }}
+          //       />
+          //     );
+          //   })}
+          // </div>
         )}
         emptyMessage="Ingen tjenester funnet (enda). Sjekk at du har publiserte tjenester i WordPress."
         noResultsMessage="Ingen treff. Prøv et annet søk."

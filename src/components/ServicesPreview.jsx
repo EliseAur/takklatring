@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { usePopularServices } from "../hooks/usePopularServices";
 import { useContext } from "react";
 import { LoadingContext } from "../context/LoadingContext";
-import { ServiceCard } from "./index";
+import { CardItem } from "./index";
 
 export default function ServicesPreview() {
   const navigate = useNavigate();
@@ -45,7 +45,22 @@ export default function ServicesPreview() {
             Alle tjenester →
           </Link>
         </div>
-        <ServiceCard services={services} onServiceClick={handleServiceClick} />
+
+        <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((service) => (
+            <CardItem
+              key={service.id}
+              to={`/tjenester/${service.slug}`}
+              imageUrl={service.image_url}
+              imageAlt={service.image_alt || ""}
+              title={service.title}
+              description={service?.acf?.tjeneste_short_description}
+              ctaText="Les mer →"
+              onClick={() => handleServiceClick(service)}
+            />
+          ))}
+        </div>
+
         {/* Mobil-knapp */}
         <div className="mt-10 sm:hidden">
           <Link
