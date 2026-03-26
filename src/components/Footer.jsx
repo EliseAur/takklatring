@@ -5,7 +5,9 @@ import { faPhone, faAt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 export default function Footer({ hero, footer }) {
   const title = hero?.hero_title || "Tak og FasadeKlatring AS";
   const subtitle = hero?.hero_subtitle || "Alt av håndverk i høyden";
-  const descriptionMobile = hero?.hero_description_mobile || "Vi tilbyr profesjonell og trygg utførelse av arbeid på tak og fasader.";
+  const descriptionMobile =
+    hero?.hero_description_mobile ||
+    "Vi tilbyr profesjonell og trygg utførelse av arbeid på tak og fasader.";
   const phoneNumber = footer?.phone_number || "Kan ikke hente telefonnummer";
   const email = footer?.email || "Kan ikke hente e-post";
 
@@ -74,7 +76,9 @@ export default function Footer({ hero, footer }) {
 
       {/* Bunnlinje */}
       <div className="border-t border-neutral-700">
-        <div className="max-w-6xl mx-auto px-6 py-6 text-sm text-neutral-500 text-center">© {new Date().getFullYear()} Tak og FasadeKlatring AS. Alle rettigheter reservert.</div>
+        <div className="max-w-6xl mx-auto px-6 py-6 text-sm text-neutral-500 text-center">
+          © {new Date().getFullYear()} Tak og FasadeKlatring AS. Alle rettigheter reservert.
+        </div>
       </div>
     </footer>
   );

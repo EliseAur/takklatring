@@ -28,19 +28,30 @@ export default function ServicesPreview() {
       <div className="max-w-7xl mx-auto px-7 md:px-20">
         <div className="flex items-end justify-between gap-6 mb-10">
           <div>
-            <h2 className="text-3xl md:text-4xl font-headings font-bold text-darkblue">Mest populære tjenester</h2>
-            <p className="text-neutral-800 md:text-lg mt-2 pb-1">Et lite utvalg av det vi gjør mest.</p>
+            <h2 className="text-3xl md:text-4xl font-headings font-bold text-darkblue">
+              Mest populære tjenester
+            </h2>
+            <p className="text-neutral-800 md:text-lg mt-2 pb-1">
+              Et lite utvalg av det vi gjør mest.
+            </p>
           </div>
 
           {/* Desktop-knapp */}
-          <Link to="/tjenester" onClick={handleAllServicesClick} className="hidden sm:inline-block text-md md:text-lg border-b-3 border-orange font-bold hover:border-b-4 transition-all">
+          <Link
+            to="/tjenester"
+            onClick={handleAllServicesClick}
+            className="hidden sm:inline-block text-md md:text-lg border-b-3 border-orange font-bold hover:border-b-4 transition-all"
+          >
             Alle tjenester →
           </Link>
         </div>
         <ServiceCard services={services} onServiceClick={handleServiceClick} />
         {/* Mobil-knapp */}
         <div className="mt-10 sm:hidden">
-          <Link to="/tjenester" className="inline-block border-b-3 border-orange font-semibold hover:border-b-4 transition-all">
+          <Link
+            to="/tjenester"
+            className="inline-block border-b-3 border-orange font-semibold hover:border-b-4 transition-all"
+          >
             Alle tjenester →
           </Link>
         </div>

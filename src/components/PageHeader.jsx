@@ -1,4 +1,10 @@
-export default function PageHeader({ eyebrow, title, description, search, className = "bg-darkblue border-b" }) {
+export default function PageHeader({
+  eyebrow,
+  title,
+  description,
+  search,
+  className = "bg-darkblue border-b",
+}) {
   return (
     <section className={className}>
       <div className="max-w-6xl mx-auto px-6 py-12">

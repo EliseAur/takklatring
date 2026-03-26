@@ -4,5 +4,9 @@ import { LoadingContext } from "./LoadingContext";
 export function LoadingProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
 
-  return <LoadingContext.Provider value={{ isLoading, setIsLoading }}>{children}</LoadingContext.Provider>;
+  return (
+    <LoadingContext.Provider value={{ isLoading, setIsLoading }}>
+      {children}
+    </LoadingContext.Provider>
+  );
 }

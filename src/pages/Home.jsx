@@ -1,4 +1,10 @@
-import { Hero, ServicesPreview, ProjectsPreview, BookingSection, ReviewsSection } from "../components";
+import {
+  Hero,
+  ServicesPreview,
+  ProjectsPreview,
+  BookingSection,
+  ReviewsSection,
+} from "../components";
 import { useFrontPageHero } from "../hooks/useFrontPageHero";
 // import { useLocation } from "react-router-dom";
 // import { useState, useEffect } from "react";
