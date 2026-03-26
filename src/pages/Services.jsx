@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
-import ServiceCard from "../components/ServiceCard";
+import { ServiceCard, PageHeader, CardsSection, ErrorAlert } from "../components";
 import { useServices } from "../hooks/useServices";
 
 export default function Services() {
   const { services, error } = useServices();
+  const forceError = false; // For testing av error-visning
   const [query, setQuery] = useState("");
 
   const filtered = useMemo(() => {
@@ -17,13 +18,13 @@ export default function Services() {
     });
   }, [services, query]);
 
-  if (error) {
+  if (error || forceError) {
     return (
-      <main className="min-h-[50vh]">
-        <section className="bg-neutral-100 border-b">
-          <div className="max-w-6xl mx-auto px-6 py-12">
-            <h1 className="text-4xl md:text-5xl font-headings font-bold text-darkblue">Tjenester</h1>
-            <p className="mt-3 text-red-600 max-w-2xl">Feil: {error}</p>
+      <main className="">
+        <PageHeader eyebrow="Tjenester" title="Alle tjenester" />
+        <section className="py-12 bg-neutral-100">
+          <div className="max-w-6xl mx-auto px-6">
+            <ErrorAlert message="Kunne ikke hente tjenester fra server. Prøv igjen senere." />
           </div>
         </section>
       </main>
@@ -32,46 +33,24 @@ export default function Services() {
 
   return (
     <main>
-      {/* Header/intro */}
-      <section className="bg-darkblue border-b">
-        <div className="max-w-6xl mx-auto px-6 py-12">
-          <p className="text-orange font-bold uppercase tracking-wide">Tjenester</p>
-          <h1 className="text-4xl md:text-5xl font-headings font-bold text-white mt-2">Alle tjenester</h1>
-          <p className="mt-4 text-neutral-200 max-w-2xl">Se oversikt over hva vi tilbyr. Trykk på en tjeneste for å lese mer.</p>
-
-          {/* Søk */}
-          <div className="mt-6 max-w-md">
-            <label className="sr-only" htmlFor="service-search">
-              Søk
-            </label>
-            <input
-              id="service-search"
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Søk i tjenester…"
-              className="w-full rounded-sm border border-white/20 bg-white/10 px-4 py-3 text-white placeholder:text-white/60
-                         focus:outline-none focus:ring-2 focus:ring-orange"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Cards */}
-      <section className="py-16 bg-neutral-100">
-        <div className="max-w-6xl mx-auto px-6">
-          {/* Liten “empty state” om services ikke er kommet ennå (global loader vises uansett) */}
-          {services.length === 0 ? (
-            <div className="bg-white rounded-md border p-8 text-neutral-700">Ingen tjenester funnet (enda). Sjekk at du har publiserte tjenester i WordPress.</div>
-          ) : filtered.length > 0 ? (
-            <ServiceCard services={filtered} />
-          ) : (
-            <div className="max-w-2xl mx-auto bg-white p-8 rounded-md shadow-sm border-l-4 border-orange">
-              <p className="text-neutral-800 md:text-lg">Ingen treff. Prøv et annet søk.</p>
-            </div>
-          )}
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Tjenester"
+        title="Alle tjenester"
+        description="Se oversikt over hva vi tilbyr. Trykk på en tjeneste for å lese mer."
+        search={{
+          id: "service-search",
+          value: query,
+          onChange: (e) => setQuery(e.target.value),
+          placeholder: "Søk i tjenester…",
+        }}
+      />
+      <CardsSection
+        items={services}
+        filteredItems={filtered}
+        renderItems={(items) => <ServiceCard services={items} />}
+        emptyMessage="Ingen tjenester funnet (enda). Sjekk at du har publiserte tjenester i WordPress."
+        noResultsMessage="Ingen treff. Prøv et annet søk."
+      />
     </main>
   );
 }

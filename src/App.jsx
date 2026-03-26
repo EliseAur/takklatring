@@ -40,15 +40,17 @@ function App() {
     <LoadingProvider>
       <Router>
         <GlobalLoadingSpinner />
-        <Header />
-        <main className="flex flex-col min-h-screen">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/tjenester" element={<Services />} />
-            <Route path="/tjenester/:slug" element={<ServiceDetail />} />
-          </Routes>
-        </main>
-        <Footer footer={footer} hero={hero} />
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <main className="flex flex-col flex-1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/tjenester" element={<Services />} />
+              <Route path="/tjenester/:slug" element={<ServiceDetail />} />
+            </Routes>
+          </main>
+          <Footer footer={footer} hero={hero} />
+        </div>
       </Router>
     </LoadingProvider>
   );
