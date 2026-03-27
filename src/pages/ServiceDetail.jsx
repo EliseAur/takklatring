@@ -1,16 +1,22 @@
 import { Link, useParams } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-
-import { BookingSection, ReviewsSection } from "../components";
+import { BookingSection, ReviewsSection, PageHeader, ErrorAlert, PageLoader } from "../components";
 import { useServiceDetail } from "../hooks/useServiceDetail";
 
 export default function ServiceDetail() {
   const { slug } = useParams();
-  const { service, error } = useServiceDetail(slug);
-
+  const { service, loading, error } = useServiceDetail(slug);
   const [lightboxIndex, setLightboxIndex] = useState(-1);
+
+  const forceError = false; // For testing av error-visning
+
+  useEffect(() => {
+    if (!loading) {
+      window.scrollTo(0, 0);
+    }
+  }, [loading]);
 
   const slides = useMemo(() => {
     if (!service?.content) return [];
@@ -48,8 +54,42 @@ export default function ServiceDetail() {
     }
   };
 
-  if (error) return <div>Feil: {error}</div>;
-  if (!service) return null;
+  if (loading) {
+    return (
+      // <main className="min-h-screen">
+      //   <div className="fixed inset-0 flex flex-col items-center justify-center bg-darkblue/80 backdrop-blur-sm z-50">
+      //     <div className="loader ease-linear rounded-full border-10 border-t-10 border-neutral-100 h-20 w-20"></div>
+      //     <div className="text-xl pt-5 text-neutral-100">Loading...</div>
+      //   </div>
+      // </main>
+      <PageLoader />
+    );
+  }
+
+  if (error || forceError) {
+    return (
+      <main className="">
+        <PageHeader eyebrow="Tjeneste" title="Tjeneste ikke funnet" />
+        <section className="py-12 bg-neutral-100">
+          <div className="max-w-6xl mx-auto px-6">
+            <ErrorAlert message="Kunne ikke hente tjeneste fra server. Prøv igjen senere." />
+          </div>
+        </section>
+      </main>
+    );
+  }
+  if (!service) {
+    return (
+      <main>
+        <PageHeader eyebrow="Tjeneste" title="Tjeneste ikke funnet" />
+        <section className="py-12 bg-neutral-100">
+          <div className="max-w-6xl mx-auto px-6">
+            <ErrorAlert message="Vi fant ikke tjenesten du prøvde å åpne." />
+          </div>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main>
@@ -114,8 +154,10 @@ export default function ServiceDetail() {
           </article>
         </div>
       </section>
+
       <BookingSection />
       <ReviewsSection />
+
       <Lightbox
         open={lightboxIndex >= 0}
         close={() => setLightboxIndex(-1)}
@@ -124,7 +166,6 @@ export default function ServiceDetail() {
         render={{
           slide: ({ slide }) => (
             <div className="flex justify-center items-center h-full w-full">
-              {/* Wrapper som styrer bredden */}
               <div className="flex flex-col items-center max-w-[90vw]">
                 <img
                   src={slide.src}

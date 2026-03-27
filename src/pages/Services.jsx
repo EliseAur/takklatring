@@ -1,11 +1,16 @@
-import { useMemo, useState } from "react";
-import { PageHeader, CardsSection, CardItem, ErrorAlert } from "../components";
+import { useMemo, useState, useEffect } from "react";
+import { PageHeader, CardsSection, CardItem, ErrorAlert, PageLoader } from "../components";
 import { useServices } from "../hooks/useServices";
 
 export default function Services() {
-  const { services, error } = useServices();
-  const forceError = false; // For testing av error-visning
+  const { services, loading, error } = useServices();
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    if (!loading) {
+      window.scrollTo(0, 0);
+    }
+  }, [loading]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -18,7 +23,11 @@ export default function Services() {
     });
   }, [services, query]);
 
-  if (error || forceError) {
+  if (loading) {
+    return <PageLoader />;
+  }
+
+  if (error) {
     return (
       <main className="">
         <PageHeader eyebrow="Tjenester" title="Alle tjenester" />
@@ -62,27 +71,6 @@ export default function Services() {
               />
             ))}
           </div>
-          // <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-          //   {items.map((service) => {
-          //     const hasSlug = Boolean(service?.slug);
-          //     const to = hasSlug ? `/tjenester/${service.slug}` : "#";
-
-          //     return (
-          //       <CardItem
-          //         key={service.id}
-          //         to={to}
-          //         imageUrl={service.image_url}
-          //         imageAlt={service.image_alt || ""}
-          //         title={service.title}
-          //         description={service?.acf?.tjeneste_short_description}
-          //         ctaText="Les mer →"
-          //         onClick={(e) => {
-          //           if (!hasSlug) e.preventDefault();
-          //         }}
-          //       />
-          //     );
-          //   })}
-          // </div>
         )}
         emptyMessage="Ingen tjenester funnet (enda). Sjekk at du har publiserte tjenester i WordPress."
         noResultsMessage="Ingen treff. Prøv et annet søk."

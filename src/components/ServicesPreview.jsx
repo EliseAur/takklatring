@@ -1,30 +1,16 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { usePopularServices } from "../hooks/usePopularServices";
-import { useContext } from "react";
-import { LoadingContext } from "../context/LoadingContext";
 import { CardItem } from "./index";
 
 export default function ServicesPreview() {
-  const navigate = useNavigate();
-  const { services, error } = usePopularServices(3);
-  const { setIsLoading } = useContext(LoadingContext);
+  const { services, loading, error } = usePopularServices(3);
 
-  const handleServiceClick = (e, service) => {
-    if (!service?.slug) return;
-    setIsLoading(true); // start loader før navigasjon
-    navigate(`/tjenester/${service.slug}`);
-  };
-
-  const handleAllServicesClick = () => {
-    setIsLoading(true);
-    navigate("/tjenester");
-  };
-
-  // if (loading) return null; // evt. legg inn loader senere
-  if (error) return <div>Kunne ikke hente tjenester fra WordPress.</div>;
+  if (loading) return null;
+  if (error) return <div className="px-7 md:px-20">Kunne ikke laste tjenester.</div>;
+  if (!services?.length) return null;
 
   return (
-    <section id="services" className="py-16 ">
+    <section id="services" className="py-16">
       <div className="max-w-7xl mx-auto px-7 md:px-20">
         <div className="flex items-end justify-between gap-6 mb-10">
           <div>
@@ -36,10 +22,8 @@ export default function ServicesPreview() {
             </p>
           </div>
 
-          {/* Desktop-knapp */}
           <Link
             to="/tjenester"
-            onClick={handleAllServicesClick}
             className="hidden sm:inline-block text-md md:text-lg border-b-3 border-orange font-bold hover:border-b-4 transition-all"
           >
             Alle tjenester →
@@ -56,12 +40,10 @@ export default function ServicesPreview() {
               title={service.title}
               description={service?.acf?.tjeneste_short_description}
               ctaText="Les mer →"
-              onClick={() => handleServiceClick(service)}
             />
           ))}
         </div>
 
-        {/* Mobil-knapp */}
         <div className="mt-10 sm:hidden">
           <Link
             to="/tjenester"

@@ -4,10 +4,12 @@ import {
   ProjectsPreview,
   BookingSection,
   ReviewsSection,
+  PageHeader,
+  ErrorAlert,
+  PageLoader,
 } from "../components";
 import { useFrontPageHero } from "../hooks/useFrontPageHero";
-// import { useLocation } from "react-router-dom";
-// import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 /**
  * Home page component that renders the hero and other main sections of the website.
@@ -22,19 +24,31 @@ import { useFrontPageHero } from "../hooks/useFrontPageHero";
  * )
  */
 export default function Home() {
-  const { hero, error } = useFrontPageHero();
+  const { hero, loading, error } = useFrontPageHero();
 
-  // Sjekk om denne har en effekt på scroll-oppførselen ved innlastning av siden
-  // Vurder om dette bør flyttes til App.jsx eller håndteres av en ScrollToTop-komponent
-  // useLayoutEffect(() => {
-  //   console.log("Home mounted, before scroll:", window.scrollY);
-  //   window.scrollTo(0, 0);
-  //   console.log("Home mounted, after scroll:", window.scrollY);
-  // }, []);
+  const forceError = false; // For testing av error-visning
 
-  if (error) {
-    console.error(error);
-    return <div>Kunne ikke hente innhold fra WordPress.</div>;
+  useEffect(() => {
+    if (!loading) {
+      window.scrollTo(0, 0);
+    }
+  }, [loading]);
+
+  if (loading) {
+    return <PageLoader />;
+  }
+
+  if (error || forceError) {
+    return (
+      <main>
+        <PageHeader eyebrow="Hjem" title="Innhold ikke funnet" />
+        <section className="py-12 bg-neutral-100">
+          <div className="max-w-6xl mx-auto px-6">
+            <ErrorAlert message="Kunne ikke hente innhold fra server. Prøv igjen senere." />
+          </div>
+        </section>
+      </main>
+    );
   }
 
   return (

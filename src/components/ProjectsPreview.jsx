@@ -22,7 +22,6 @@ export default function ProjectsPreview() {
             </p>
           </div>
 
-          {/* Desktop-knapp */}
           <Link
             to="/prosjekter"
             className="hidden sm:inline-block md:text-lg border-b-3 border-orange font-bold text-neutral-100 hover:border-b-4 transition-all"
@@ -45,7 +44,6 @@ export default function ProjectsPreview() {
           ))}
         </div>
 
-        {/* Mobil-knapp */}
         <div className="mt-10 sm:hidden">
           <Link
             to="/prosjekter"

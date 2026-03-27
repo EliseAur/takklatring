@@ -1,34 +1,33 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { getServices } from "../api/wp";
-import { LoadingContext } from "../context/LoadingContext";
 
 export function useServices() {
   const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { setIsLoading } = useContext(LoadingContext);
 
   useEffect(() => {
-    let alive = true;
+    let isMounted = true;
 
     (async () => {
       try {
-        setIsLoading(true);
+        setLoading(true);
+        setError(null);
+
         const data = await getServices();
-        if (alive) setServices(data);
+
+        if (isMounted) setServices(data);
       } catch (e) {
-        if (alive) setError(e?.message || "Ukjent feil");
+        if (isMounted) setError(e?.message || "Ukjent feil");
       } finally {
-        if (alive) {
-          setIsLoading(false);
-          window.scrollTo(0, 0);
-        }
+        if (isMounted) setLoading(false);
       }
     })();
 
     return () => {
-      alive = false;
+      isMounted = false;
     };
-  }, [setIsLoading]);
+  }, []);
 
-  return { services, error };
+  return { services, loading, error };
 }
