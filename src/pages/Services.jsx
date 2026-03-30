@@ -72,7 +72,7 @@ export default function Services() {
             ))}
           </div>
         )}
-        emptyMessage="Ingen tjenester funnet (enda). Sjekk at du har publiserte tjenester i WordPress."
+        emptyMessage="Vi fant ingen tjenester akkurat nå. Ta gjerne kontakt for mer informasjon."
         noResultsMessage="Ingen treff. Prøv et annet søk."
       />
     </main>
