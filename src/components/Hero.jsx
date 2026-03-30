@@ -17,14 +17,13 @@ import iconVerified from "../images/icon-verified-orange.svg";
  * )
  */
 export default function Hero({ hero }) {
-  const title = hero?.hero_title || "Main title";
-  const subtitle = hero?.hero_subtitle || "Subtitle";
-  const descriptionDesktop = hero?.hero_description_desktop || "Description desktop";
-  const descriptionMobile = hero?.hero_description_mobile || "Description mobile";
-  const usps = hero?.hero_usps?.length ? hero.hero_usps : ["USP 1", "USP 2", "USP 3"];
-
-  console.log("WP hero_description:", hero?.hero_description_desktop);
-  console.log("Used description:", descriptionDesktop);
+  const title = hero?.hero_title || "Tak- og fasadeklatring";
+  const subtitle = hero?.hero_subtitle || "Alt av håndverk i høyden";
+  const descriptionDesktop = hero?.hero_description_desktop || "";
+  const descriptionMobile = hero?.hero_description_mobile || "";
+  const usps = hero?.hero_usps?.length
+    ? hero.hero_usps
+    : ["Sertifisert for arbeid i høyden", "HMS i fokus", "Lang erfaring"];
 
   const imageSrc = hero?.hero_image_url || fallbackHeroImage;
   const imageAlt = hero?.hero_image_alt || "";
