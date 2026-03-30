@@ -14,8 +14,6 @@ import CardsSection from "./CardsSection";
 import ErrorAlert from "./ErrorAlert";
 import MessageCard from "./MessageCard";
 import PageLoader from "./PageLoader";
-import GlobalLoadingSpinner from "./GlobalLoadingSpinner";
-// import ScrollToTop from "./ScrollToTop";
 
 export {
   Header,
@@ -32,7 +30,6 @@ export {
   PageHeader,
   CardsSection,
   ErrorAlert,
-  GlobalLoadingSpinner,
   MessageCard,
   PageLoader,
 };
