@@ -1,32 +1,31 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { getPopularServices } from "../api/wp";
-import { LoadingContext } from "../context/LoadingContext";
 
 export function usePopularServices(limit = 3) {
   const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const { setIsLoading } = useContext(LoadingContext);
-
   useEffect(() => {
-    let alive = true;
+    let isMounted = true;
 
     (async () => {
       try {
-        setIsLoading(true);
+        setLoading(true);
+        setError(null);
         const data = await getPopularServices({ limit });
-        if (alive) setServices(data);
+        if (isMounted) setServices(data);
       } catch (e) {
-        if (alive) setError(e);
+        if (isMounted) setError(e);
       } finally {
-        if (alive) setIsLoading(false);
+        if (isMounted) setLoading(false);
       }
     })();
 
     return () => {
-      alive = false;
+      isMounted = false;
     };
-  }, [limit, setIsLoading]);
+  }, [limit]);
 
-  return { services, error };
+  return { services, loading, error };
 }

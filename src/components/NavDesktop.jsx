@@ -17,16 +17,28 @@ export default function NavDesktop() {
   return (
     <nav className="hidden lg:flex justify-end w-full mt-2 font-headings text-lg">
       <div className="flex-1/2 space-x-6 flex-grow mx-auto text-right font-bold">
-        <Link to="/tjenester" className="border-b-3 border-orange px-2 mx-5 transition-all duration-200 hover:border-b-4">
+        <Link
+          to="/tjenester"
+          className="border-b-3 border-orange px-2 mx-5 transition-all duration-200 hover:border-b-4"
+        >
           Tjenester
         </Link>
-        <Link to="/kontakt" className="border-b-3 border-orange px-2 mx-5 transition-all duration-200 hover:border-b-4">
+        <Link
+          to="/kontakt"
+          className="border-b-3 border-orange px-2 mx-5 transition-all duration-200 hover:border-b-4"
+        >
           Få tilbud
         </Link>
-        <Link to="/prosjekter" className="border-b-3 border-orange px-2 mx-5 transition-all duration-200 hover:border-b-4">
+        <Link
+          to="/prosjekter"
+          className="border-b-3 border-orange px-2 mx-5 transition-all duration-200 hover:border-b-4"
+        >
           Prosjekter
         </Link>
-        <Link to="/om-oss" className="border-b-3 border-orange px-2 mx-5 transition-all duration-200 hover:border-b-4">
+        <Link
+          to="/om-oss"
+          className="border-b-3 border-orange px-2 mx-5 transition-all duration-200 hover:border-b-4"
+        >
           Om oss
         </Link>
       </div>

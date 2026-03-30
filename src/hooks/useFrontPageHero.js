@@ -1,35 +1,33 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { getFrontPageHero } from "../api/wp";
-import { LoadingContext } from "../context/LoadingContext";
 
 export function useFrontPageHero() {
   const [hero, setHero] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { setIsLoading } = useContext(LoadingContext);
 
   useEffect(() => {
-    let alive = true;
+    let isMounted = true;
 
     (async () => {
       try {
-        setIsLoading(true); // Start global loader
+        setLoading(true);
+        setError(null);
+
         const data = await getFrontPageHero();
-        if (alive) setHero(data);
+
+        if (isMounted) setHero(data);
       } catch (e) {
-        if (alive) setError(e);
+        if (isMounted) setError(e);
       } finally {
-        if (alive) {
-          setIsLoading(false); // Stop global loader4
-          // Scroll til topp ETTER data er lastet
-          window.scrollTo(0, 0);
-        }
+        if (isMounted) setLoading(false);
       }
     })();
 
     return () => {
-      alive = false;
+      isMounted = false;
     };
-  }, [setIsLoading]);
+  }, []);
 
-  return { hero, error };
+  return { hero, loading, error };
 }

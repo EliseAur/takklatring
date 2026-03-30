@@ -12,6 +12,7 @@ export function useFeaturedProjects({ limit = 3 } = {}) {
     (async () => {
       try {
         setLoading(true);
+        setError(null);
         const data = await getFeaturedProjects({ limit });
         if (isMounted) setProjects(data);
       } catch (e) {

@@ -73,7 +73,11 @@ export default function Header() {
     <header className="w-full z-50 sticky top-0 bg-neutral-100 text-darkblue shadow-sm">
       <div className="flex py-3 px-3 sm:pr-5 mx-auto">
         <div className="flex w-full justify-center items-center">
-          <Link to="/" onClick={handleLogoClick} className="logo w-[200px] flex-1/3 hover:cursor-pointer tracking-tight">
+          <Link
+            to="/"
+            onClick={handleLogoClick}
+            className="logo w-[200px] flex-1/3 hover:cursor-pointer tracking-tight"
+          >
             <img src={logoImage} alt="Takklatring logo" className="h-[65px] lg:h-[80px] w-auto" />
           </Link>
           <NavDesktop />
@@ -93,7 +97,10 @@ export default function Header() {
         </div>
       </div>
       {isOpen && (
-        <div ref={menuRef} className="fixed top-0 right-0 pl-15 pb-5 rounded-bl-sm flex flex-col items-center justify-start z-50 lg:hidden">
+        <div
+          ref={menuRef}
+          className="fixed top-0 right-0 pl-15 pb-5 rounded-bl-sm flex flex-col items-center justify-start z-50 lg:hidden"
+        >
           <NavMobile onLinkClick={handleLinkClick} />
         </div>
       )}
