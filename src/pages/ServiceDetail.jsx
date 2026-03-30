@@ -2,7 +2,13 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import { BookingSection, ReviewsSection, PageHeader, ErrorAlert, PageLoader } from "../components";
+import {
+  BookingSection,
+  ReviewsSection,
+  PageHeader,
+  ErrorAlertPage,
+  PageLoader,
+} from "../components";
 import { useServiceDetail } from "../hooks/useServiceDetail";
 
 export default function ServiceDetail() {
@@ -55,26 +61,14 @@ export default function ServiceDetail() {
   };
 
   if (loading) {
-    return (
-      // <main className="min-h-screen">
-      //   <div className="fixed inset-0 flex flex-col items-center justify-center bg-darkblue/80 backdrop-blur-sm z-50">
-      //     <div className="loader ease-linear rounded-full border-10 border-t-10 border-neutral-100 h-20 w-20"></div>
-      //     <div className="text-xl pt-5 text-neutral-100">Loading...</div>
-      //   </div>
-      // </main>
-      <PageLoader />
-    );
+    return <PageLoader />;
   }
 
   if (error || forceError) {
     return (
       <main className="">
         <PageHeader eyebrow="Tjeneste" title="Tjeneste ikke funnet" />
-        <section className="py-12 bg-neutral-100">
-          <div className="max-w-6xl mx-auto px-6">
-            <ErrorAlert message="Kunne ikke hente tjeneste fra server. Prøv igjen senere." />
-          </div>
-        </section>
+        <ErrorAlertPage message="Kunne ikke hente tjeneste fra server. Prøv igjen senere." />
       </main>
     );
   }
@@ -82,11 +76,7 @@ export default function ServiceDetail() {
     return (
       <main>
         <PageHeader eyebrow="Tjeneste" title="Tjeneste ikke funnet" />
-        <section className="py-12 bg-neutral-100">
-          <div className="max-w-6xl mx-auto px-6">
-            <ErrorAlert message="Vi fant ikke tjenesten du prøvde å åpne." />
-          </div>
-        </section>
+        <ErrorAlertPage message="Vi fant ikke tjenesten du prøvde å åpne." />
       </main>
     );
   }

@@ -1,10 +1,12 @@
 import { useMemo, useState, useEffect } from "react";
-import { PageHeader, CardsSection, CardItem, ErrorAlert, PageLoader } from "../components";
+import { PageHeader, CardsSection, CardItem, ErrorAlertPage, PageLoader } from "../components";
 import { useServices } from "../hooks/useServices";
 
 export default function Services() {
   const { services, loading, error } = useServices();
   const [query, setQuery] = useState("");
+
+  const forceError = false; // For testing av error-visning
 
   useEffect(() => {
     if (!loading) {
@@ -27,15 +29,11 @@ export default function Services() {
     return <PageLoader />;
   }
 
-  if (error) {
+  if (error || forceError) {
     return (
       <main className="">
         <PageHeader eyebrow="Tjenester" title="Alle tjenester" />
-        <section className="py-12 bg-neutral-100">
-          <div className="max-w-6xl mx-auto px-6">
-            <ErrorAlert message="Kunne ikke hente tjenester fra server. Prøv igjen senere." />
-          </div>
-        </section>
+        <ErrorAlertPage message="Kunne ikke hente tjenester fra server. Prøv igjen senere." />
       </main>
     );
   }

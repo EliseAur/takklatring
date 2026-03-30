@@ -11,7 +11,8 @@ import ReviewsSection from "./ReviewsSection";
 import Footer from "./Footer";
 import PageHeader from "./PageHeader";
 import CardsSection from "./CardsSection";
-import ErrorAlert from "./ErrorAlert";
+import ErrorAlertSection from "./ErrorAlertSection";
+import ErrorAlertPage from "./ErrorAlertPage";
 import MessageCard from "./MessageCard";
 import PageLoader from "./PageLoader";
 
@@ -29,7 +30,8 @@ export {
   Footer,
   PageHeader,
   CardsSection,
-  ErrorAlert,
+  ErrorAlertSection,
+  ErrorAlertPage,
   MessageCard,
   PageLoader,
 };

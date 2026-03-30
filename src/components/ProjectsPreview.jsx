@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { useFeaturedProjects } from "../hooks/useFeaturedProjects";
-import { CardItem } from "./index";
+import { CardItem, ErrorAlertSection } from "./index";
 
 export default function ProjectsPreview() {
   const { projects, loading, error } = useFeaturedProjects({ limit: 3 });
 
+  const forceError = false; // For testing av error state
+
   if (loading) return null;
-  if (error) return <div className="px-7 md:px-20">Kunne ikke laste prosjekter.</div>;
-  if (!projects?.length) return null;
+  if (!projects?.length && !error && !forceError) return null;
 
   return (
     <section id="projects" className="py-16 bg-darkblue">
@@ -21,37 +22,44 @@ export default function ProjectsPreview() {
               Se noen eksempler på arbeid vi har gjort.
             </p>
           </div>
-
-          <Link
-            to="/prosjekter"
-            className="hidden sm:inline-block md:text-lg border-b-3 border-orange font-bold text-neutral-100 hover:border-b-4 transition-all"
-          >
-            Alle prosjekter →
-          </Link>
+          {!error && !forceError && (
+            <Link
+              to="/prosjekter"
+              className="hidden sm:inline-block md:text-lg border-b-3 border-orange font-bold text-neutral-100 hover:border-b-4 transition-all"
+            >
+              Alle prosjekter →
+            </Link>
+          )}
         </div>
 
-        <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <CardItem
-              key={project.id}
-              to={`/prosjekter/${project.slug}`}
-              imageUrl={project.image_url}
-              imageAlt={project.image_alt || ""}
-              title={project.title}
-              description={project?.acf?.project_short_text}
-              ctaText="Se prosjekt →"
-            />
-          ))}
-        </div>
+        {error || forceError ? (
+          <ErrorAlertSection message="Kunne ikke hente prosjekter fra server. Prøv igjen senere." />
+        ) : (
+          <>
+            <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+              {projects.map((project) => (
+                <CardItem
+                  key={project.id}
+                  to={`/prosjekter/${project.slug}`}
+                  imageUrl={project.image_url}
+                  imageAlt={project.image_alt || ""}
+                  title={project.title}
+                  description={project?.acf?.project_short_text}
+                  ctaText="Se prosjekt →"
+                />
+              ))}
+            </div>
 
-        <div className="mt-10 sm:hidden">
-          <Link
-            to="/prosjekter"
-            className="inline-block md:text-lg border-b-3 border-orange font-bold text-neutral-100 hover:border-b-4 transition-all"
-          >
-            Alle prosjekter →
-          </Link>
-        </div>
+            <div className="mt-10 sm:hidden">
+              <Link
+                to="/prosjekter"
+                className="inline-block md:text-lg border-b-3 border-orange font-bold text-neutral-100 hover:border-b-4 transition-all"
+              >
+                Alle prosjekter →
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </section>
   );

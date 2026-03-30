@@ -5,7 +5,7 @@ import {
   BookingSection,
   ReviewsSection,
   PageHeader,
-  ErrorAlert,
+  ErrorAlertPage,
   PageLoader,
 } from "../components";
 import { useFrontPageHero } from "../hooks/useFrontPageHero";
@@ -42,11 +42,7 @@ export default function Home() {
     return (
       <main>
         <PageHeader eyebrow="Hjem" title="Innhold ikke funnet" />
-        <section className="py-12 bg-neutral-100">
-          <div className="max-w-6xl mx-auto px-6">
-            <ErrorAlert message="Kunne ikke hente innhold fra server. Prøv igjen senere." />
-          </div>
-        </section>
+        <ErrorAlertPage message="Kunne ikke hente innhold fra server. Prøv igjen senere." />
       </main>
     );
   }
