@@ -14,14 +14,12 @@ export default function Footer({ hero, footer }) {
   return (
     <footer className="bg-darkblue text-neutral-400">
       <div className="max-w-6xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-3">
-        {/* Logo / firma */}
         <div className="md:mx-auto">
           <h3 className="font-headings text-3xl font-bold text-neutral-100 mb-2">{title}</h3>
           <p className="max-w-xs uppercase text-sm text-neutral-200">{subtitle}</p>
           <p className="max-w-xs mt-1">{descriptionMobile}</p>
         </div>
 
-        {/* Navigasjon */}
         <nav className="md:mx-auto">
           <h4 className="font-headings text-lg font-bold text-neutral-100 mb-2">Navigasjon</h4>
           <ul className="space-y-2 text-neutral-200 marker:text-orange list-disc list-inside">
@@ -48,7 +46,6 @@ export default function Footer({ hero, footer }) {
           </ul>
         </nav>
 
-        {/* Kontakt */}
         <div className="md:mx-auto">
           <h4 className="font-headings text-lg font-bold text-neutral-100 mb-2">Kontakt</h4>
           <ul className="space-y-2">
@@ -74,7 +71,6 @@ export default function Footer({ hero, footer }) {
         </div>
       </div>
 
-      {/* Bunnlinje */}
       <div className="border-t border-neutral-700">
         <div className="max-w-6xl mx-auto px-6 py-6 text-sm text-neutral-500 text-center">
           © {new Date().getFullYear()} Tak og FasadeKlatring AS. Alle rettigheter reservert.
