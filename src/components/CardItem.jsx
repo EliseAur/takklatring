@@ -8,6 +8,7 @@ export default function CardItem({
   title,
   description,
   date,
+  location,
   ctaText = "Les mer →",
   onClick,
 }) {
@@ -28,7 +29,11 @@ export default function CardItem({
       )}
 
       <div className="p-6 flex flex-col flex-1">
-        {formattedDate && <p className="text-sm text-neutral-500 mb-1">{formattedDate}</p>}
+        {formattedDate && (
+          <p className="text-sm text-neutral-500 mb-1">
+            {formattedDate} - {location}
+          </p>
+        )}
         <h3 className="font-bold text-xl text-darkblue mb-2">{title}</h3>
 
         {description && (

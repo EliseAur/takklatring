@@ -44,6 +44,7 @@ export default function ProjectsPreview() {
                   imageUrl={project.image_url}
                   imageAlt={project.image_alt || ""}
                   date={project?.acf?.project_date}
+                  location={project?.acf?.project_location}
                   title={project.title}
                   description={project?.acf?.project_short_text}
                   ctaText="Se prosjekt →"

@@ -7,6 +7,11 @@ export default function Projects() {
   const [query, setQuery] = useState("");
 
   const forceError = false; // For testing av error-visning
+  const forceEmpty = false; // For testing av empty state
+
+  const displayProjects = useMemo(() => {
+    return forceEmpty ? [] : projects;
+  }, [forceEmpty, projects]);
 
   useEffect(() => {
     if (!loading) {
@@ -16,14 +21,14 @@ export default function Projects() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return projects;
+    if (!q) return displayProjects;
 
-    return projects.filter((project) => {
+    return displayProjects.filter((project) => {
       const title = project?.title?.toLowerCase() || "";
       const desc = project?.acf?.project_short_text?.toLowerCase() || "";
       return title.includes(q) || desc.includes(q);
     });
-  }, [projects, query]);
+  }, [displayProjects, query]);
 
   if (loading) {
     return <PageLoader />;
@@ -53,7 +58,7 @@ export default function Projects() {
       />
 
       <CardsSection
-        items={projects}
+        items={displayProjects}
         filteredItems={filtered}
         renderItems={(items) => (
           <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
@@ -64,6 +69,7 @@ export default function Projects() {
                 imageUrl={project.image_url}
                 imageAlt={project.image_alt || ""}
                 title={project.title}
+                location={project?.acf?.project_location}
                 date={project?.acf?.project_date}
                 description={project?.acf?.project_short_text}
                 ctaText="Se prosjekt →"
@@ -71,7 +77,7 @@ export default function Projects() {
             ))}
           </div>
         )}
-        emptyMessage="Vi fant ingen prosjekter akkurat nå. Ta gjerne kontakt for mer informasjon."
+        emptyMessage="Ingen prosjekter er tilgjengelige nå. Ta gjerne en titt innom senere. "
         noResultsMessage="Ingen treff. Prøv et annet søk."
       />
     </main>

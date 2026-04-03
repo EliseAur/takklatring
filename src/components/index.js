@@ -15,6 +15,7 @@ import ErrorAlertSection from "./ErrorAlertSection";
 import ErrorAlertPage from "./ErrorAlertPage";
 import MessageCard from "./MessageCard";
 import PageLoader from "./PageLoader";
+import ProjectBeforeAfterSection from "./ProjectBeforeAfterSection";
 
 export {
   Header,
@@ -34,4 +35,5 @@ export {
   ErrorAlertPage,
   MessageCard,
   PageLoader,
+  ProjectBeforeAfterSection,
 };

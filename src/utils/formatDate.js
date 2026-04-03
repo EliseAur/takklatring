@@ -19,5 +19,5 @@ export function formatProjectDate(dateString) {
     "Desember",
   ];
 
-  return `${monthNames[Number(month) - 1]} - ${year}`;
+  return `${monthNames[Number(month) - 1]} ${year}`;
 }

@@ -23,7 +23,9 @@ export async function getFrontPageHero() {
   let heroImageUrl = null;
 
   if (typeof acf.hero_image === "number") {
-    const mediaRes = await fetch(`${WP_BASE}/media/${acf.hero_image}?_fields=source_url,media_details,alt_text`);
+    const mediaRes = await fetch(
+      `${WP_BASE}/media/${acf.hero_image}?_fields=source_url,media_details,alt_text`,
+    );
     if (mediaRes.ok) {
       const media = await mediaRes.json();
       heroImageUrl = media?.media_details?.sizes?.large?.source_url || media?.source_url;
@@ -61,7 +63,9 @@ export async function getFooterData() {
 
 // Henter alle tjenester (med featured image i _embed)
 export async function getServices({ perPage = 100 } = {}) {
-  const res = await fetch(`${WP_BASE}/tjenester?per_page=${perPage}&orderby=menu_order&order=asc&_embed=1`);
+  const res = await fetch(
+    `${WP_BASE}/tjenester?per_page=${perPage}&orderby=menu_order&order=asc&_embed=1`,
+  );
   if (!res.ok) throw new Error("Kunne ikke hente tjenester fra WP");
 
   const data = await res.json();
@@ -135,6 +139,18 @@ export async function getFeaturedProjects({ limit = 3 } = {}) {
   return projects.filter((p) => p?.acf?.project_is_featured).slice(0, limit);
 }
 
+export async function getMediaById(id) {
+  const res = await fetch(`${WP_BASE}/media/${id}`);
+  if (!res.ok) return null;
+
+  const data = await res.json();
+
+  return {
+    url: data.source_url || "",
+    alt: data.alt_text || "",
+  };
+}
+
 // Henter ett prosjekt basert på slug (til detaljside senere)
 export async function getProjectBySlug(slug) {
   const res = await fetch(`${WP_BASE}/prosjekter?slug=${slug}&_embed=1`);
@@ -146,6 +162,14 @@ export async function getProjectBySlug(slug) {
 
   const image = getFeaturedImage(item);
 
+  const beforeImageId = item.acf?.project_before_image;
+  const afterImageId = item.acf?.project_after_image;
+
+  const [beforeImage, afterImage] = await Promise.all([
+    beforeImageId ? getMediaById(beforeImageId) : Promise.resolve(null),
+    afterImageId ? getMediaById(afterImageId) : Promise.resolve(null),
+  ]);
+
   return {
     id: item.id,
     slug: item.slug,
@@ -154,5 +178,9 @@ export async function getProjectBySlug(slug) {
     image_url: image.url,
     image_alt: image.alt,
     content: item.content?.rendered ?? "",
+    before_image_url: beforeImage?.url || "",
+    before_image_alt: beforeImage?.alt || "",
+    after_image_url: afterImage?.url || "",
+    after_image_alt: afterImage?.alt || "",
   };
 }
