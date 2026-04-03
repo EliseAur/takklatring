@@ -25,7 +25,7 @@ export default function ProjectsPreview() {
           {!error && !forceError && (
             <Link
               to="/prosjekter"
-              className="hidden sm:inline-block md:text-lg border-b-3 border-orange font-bold text-neutral-100 hover:border-b-4 transition-all"
+              className="hidden sm:inline-block md:text-lg border-b-3 border-orange font-bold text-neutral-100 duration-200 transition-all hover:border-b-4"
             >
               Alle prosjekter →
             </Link>
@@ -43,6 +43,7 @@ export default function ProjectsPreview() {
                   to={`/prosjekter/${project.slug}`}
                   imageUrl={project.image_url}
                   imageAlt={project.image_alt || ""}
+                  date={project?.acf?.project_date}
                   title={project.title}
                   description={project?.acf?.project_short_text}
                   ctaText="Se prosjekt →"
@@ -53,7 +54,7 @@ export default function ProjectsPreview() {
             <div className="mt-10 sm:hidden">
               <Link
                 to="/prosjekter"
-                className="inline-block md:text-lg border-b-3 border-orange font-bold text-neutral-100 hover:border-b-4 transition-all"
+                className="inline-block md:text-lg border-b-3 border-orange font-bold text-neutral-100 duration-200 transition-all hover:border-b-4"
               >
                 Alle prosjekter →
               </Link>

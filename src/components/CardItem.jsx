@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { formatProjectDate } from "../utils/formatDate";
 
 export default function CardItem({
   to = "#",
@@ -6,9 +7,12 @@ export default function CardItem({
   imageAlt = "",
   title,
   description,
+  date,
   ctaText = "Les mer →",
   onClick,
 }) {
+  const formattedDate = formatProjectDate(date);
+
   return (
     <Link
       to={to}
@@ -24,6 +28,7 @@ export default function CardItem({
       )}
 
       <div className="p-6 flex flex-col flex-1">
+        {formattedDate && <p className="text-sm text-neutral-500 mb-1">{formattedDate}</p>}
         <h3 className="font-bold text-xl text-darkblue mb-2">{title}</h3>
 
         {description && (
