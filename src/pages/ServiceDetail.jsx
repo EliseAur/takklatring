@@ -85,7 +85,7 @@ export default function ServiceDetail() {
     <main>
       <section id="top" className="bg-darkblue">
         <div className="max-w-4xl mx-auto md:px-6 md:py-12 lg:py-16 grid gap-5 lg:grid-cols-2 lg:items-center">
-          <div className="max-w-4xl px-5 pt-8 pb-4 mx-auto md:px-14 lg:px-4 lg:pb-5 lg:pt-0">
+          <div className="w-full max-w-4xl px-5 pt-8 pb-4 mx-auto md:px-14 lg:px-4 lg:pb-5 lg:pt-0">
             <p className="text-orange font-bold uppercase tracking-wide">Tjeneste</p>
             <h1 className="text-4xl md:text-[44px] font-headings font-bold text-neutral-100 mt-2">
               {service.title}
