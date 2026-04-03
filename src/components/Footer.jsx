@@ -12,7 +12,7 @@ export default function Footer({ hero, footer }) {
   const email = footer?.email || "Kan ikke hente e-post";
 
   return (
-    <footer className="bg-darkblue text-neutral-400">
+    <footer className="bg-darkblue text-neutral-400 border-t border-neutral-700">
       <div className="max-w-6xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-3">
         <div className="md:mx-auto">
           <h3 className="font-headings text-3xl font-bold text-neutral-100 mb-2">{title}</h3>
