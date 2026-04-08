@@ -26,7 +26,7 @@ export default function ServicesPreview() {
           {!error && !forceError && (
             <Link
               to="/tjenester"
-              className="hidden sm:inline-block text-md md:text-lg border-b-3 border-orange font-bold hover:border-b-4 transition-all"
+              className="hidden sm:inline-block text-md md:text-lg border-b-3 border-orange font-bold duration-200 transition-all hover:border-b-4"
             >
               Alle tjenester →
             </Link>
@@ -54,7 +54,7 @@ export default function ServicesPreview() {
             <div className="mt-10 sm:hidden">
               <Link
                 to="/tjenester"
-                className="inline-block border-b-3 border-orange font-semibold hover:border-b-4 transition-all"
+                className="inline-block border-b-3 border-orange font-semibold duration-200 transition-all hover:border-b-4"
               >
                 Alle tjenester →
               </Link>

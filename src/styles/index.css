@@ -6,6 +6,11 @@
   --color-darkblue: #22293c;
   --color-orange: #e96200;
   --color-errorBg: #f6e0e2;
+  --color-errorText: var(--color-red-700);
+  --color-errorBorder: var(--color-red-400);
+  --color-successBg: #d1fae5;
+  --color-successText: var(--color-green-800);
+  --color-successBorder: var(--color-green-400);
   /* --color-orange: var(--color-orange-600); */
   /* --gradient-gradientOrange: linear-gradient(to bottom, var(--color-orange), var(--color-neutral-100)); */
 }

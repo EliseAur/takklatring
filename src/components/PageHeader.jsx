@@ -2,17 +2,21 @@ export default function PageHeader({
   eyebrow,
   title,
   description,
+  actions,
   search,
   className = "bg-darkblue border-b",
+  divClassName = "max-w-6xl mx-auto px-6 py-12",
 }) {
   return (
     <section className={className}>
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className={`${divClassName}`}>
         {eyebrow && <p className="text-orange font-bold uppercase tracking-wide">{eyebrow}</p>}
 
         <h1 className="text-4xl md:text-5xl font-headings font-bold text-white mt-2">{title}</h1>
 
         {description && <p className="mt-4 text-neutral-200 max-w-2xl">{description}</p>}
+
+        {actions && <div className="mt-8 flex flex-wrap gap-3">{actions}</div>}
 
         {/* Search */}
         {search && (

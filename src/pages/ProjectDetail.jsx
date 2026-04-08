@@ -8,15 +8,20 @@ import {
   PageHeader,
   ErrorAlertPage,
   PageLoader,
+  ProjectBeforeAfterSection,
 } from "../components";
-import { useServiceDetail } from "../hooks/useServiceDetail";
+import { useProjectDetail } from "../hooks/useProjectDetail";
+import { formatProjectDate } from "../utils/formatDate";
 
-export default function ServiceDetail() {
+export default function ProjectDetail() {
   const { slug } = useParams();
-  const { service, loading, error } = useServiceDetail(slug);
+  const { project, loading, error } = useProjectDetail(slug);
   const [lightboxIndex, setLightboxIndex] = useState(-1);
 
   const forceError = false; // For testing av error-visning
+  const forceEmpty = false;
+
+  const formattedDate = formatProjectDate(project?.acf?.project_date);
 
   useEffect(() => {
     if (!loading) {
@@ -24,11 +29,11 @@ export default function ServiceDetail() {
     }
   }, [loading]);
 
-  const slides = useMemo(() => {
-    if (!service?.content) return [];
+  const contentSlides = useMemo(() => {
+    if (!project?.content) return [];
 
     const parser = new DOMParser();
-    const doc = parser.parseFromString(service.content, "text/html");
+    const doc = parser.parseFromString(project.content, "text/html");
 
     const figures = Array.from(doc.querySelectorAll(".wp-block-gallery .wp-block-image"));
 
@@ -42,7 +47,38 @@ export default function ServiceDetail() {
         caption: caption?.textContent || "",
       };
     });
-  }, [service?.content]);
+  }, [project?.content]);
+
+  const beforeAfterSlides = useMemo(() => {
+    const items = [];
+
+    if (project?.before_image_url) {
+      items.push({
+        src: project.before_image_url,
+        alt: project.before_image_alt || "Før-bilde",
+        caption: "Før",
+      });
+    }
+
+    if (project?.after_image_url) {
+      items.push({
+        src: project.after_image_url,
+        alt: project.after_image_alt || "Etter-bilde",
+        caption: "Etter",
+      });
+    }
+
+    return items;
+  }, [
+    project?.before_image_url,
+    project?.before_image_alt,
+    project?.after_image_url,
+    project?.after_image_alt,
+  ]);
+
+  const slides = useMemo(() => {
+    return [...contentSlides, ...beforeAfterSlides];
+  }, [contentSlides, beforeAfterSlides]);
 
   const handleContentClick = (e) => {
     const figure = e.target.closest(".wp-block-gallery .wp-block-image");
@@ -67,35 +103,38 @@ export default function ServiceDetail() {
   if (error || forceError) {
     return (
       <main className="">
-        <PageHeader eyebrow="Tjeneste" title="Tjeneste ikke funnet" />
-        <ErrorAlertPage message="Kunne ikke hente tjeneste fra server. Prøv igjen senere." />
+        <PageHeader eyebrow="Prosjekt" title="Prosjekt ikke funnet" />
+        <ErrorAlertPage message="Kunne ikke hente prosjekt fra server. Prøv igjen senere." />
       </main>
     );
   }
-  if (!service) {
+  if (!project || forceEmpty) {
     return (
       <main>
-        <PageHeader eyebrow="Tjeneste" title="Tjeneste ikke funnet" />
-        <ErrorAlertPage message="Vi fant ikke tjenesten du prøvde å åpne." />
+        <PageHeader eyebrow="Prosjekt" title="Prosjekt ikke funnet" />
+        <ErrorAlertPage message="Vi fant ikke prosjektet du prøvde å åpne." />
       </main>
     );
   }
 
   return (
-    <main>
+    <>
       <section id="top" className="bg-darkblue">
-        <div className="max-w-4xl mx-auto md:px-6 md:py-12 lg:py-16 grid gap-5 lg:grid-cols-2 lg:items-center">
+        <div className="max-w-4xl  mx-auto md:px-6 md:py-12 lg:py-16 grid gap-5 lg:grid-cols-2 lg:items-center">
           <div className="w-full max-w-4xl px-5 pt-8 pb-4 mx-auto md:px-14 lg:px-4 lg:pb-5 lg:pt-0">
-            <p className="text-orange font-bold uppercase tracking-wide">Tjeneste</p>
+            <p className="text-orange font-bold uppercase tracking-wide flex-1">Prosjekt</p>
+            {formattedDate && (
+              <p className="text-neutral-300 text-sm mt-1">
+                {formattedDate} - {project?.acf?.project_location}
+              </p>
+            )}
             <h1 className="text-4xl md:text-[44px] font-headings font-bold text-neutral-100 mt-2">
-              {service.title}
+              {project.title}
             </h1>
             <div className="mt-4 h-1 w-20 bg-orange rounded-sm" />
 
-            {service?.acf?.tjeneste_short_description && (
-              <p className="mt-3 text-lg text-neutral-300">
-                {service.acf.tjeneste_short_description}
-              </p>
+            {project?.acf?.project_short_text && (
+              <p className="mt-3 text-lg text-neutral-300">{project.acf.project_short_text}</p>
             )}
 
             <a href="#content" className="mt-3 inline-block text-white font-bold cursor-pointer">
@@ -119,11 +158,11 @@ export default function ServiceDetail() {
             </div>
           </div>
 
-          {service.image_url && (
+          {project.image_url && (
             <div className="overflow-hidden md:px-14 lg:px-4">
               <img
-                src={service.image_url}
-                alt={service.image_alt || ""}
+                src={project.image_url}
+                alt={project.image_alt || ""}
                 className="w-full aspect-[4/3] sm:aspect-[3/4] object-cover object-center max-h-[500px] md:rounded-md md:shadow-md"
               />
             </div>
@@ -135,13 +174,19 @@ export default function ServiceDetail() {
         id="content"
         className="scroll-mt-[125px] lg:scroll-mt-[100px] w-full bg-neutral-100"
       >
-        <div className="max-w-4xl mx-auto px-6 pt-0 lg:pt-6 pb-6">
+        <div className="max-w-4xl mx-auto px-6 pt-0 lg:pt-6 pb-12">
           <article
             className="wp-content max-w-4xl mx-auto md:px-14 my-10 lg:px-4"
             onClick={handleContentClick}
           >
-            <div dangerouslySetInnerHTML={{ __html: service.content }} />
+            <div dangerouslySetInnerHTML={{ __html: project.content }} />
           </article>
+
+          <ProjectBeforeAfterSection
+            project={project}
+            contentSlidesLength={contentSlides.length}
+            setLightboxIndex={setLightboxIndex}
+          />
         </div>
       </section>
 
@@ -173,6 +218,6 @@ export default function ServiceDetail() {
           ),
         }}
       />
-    </main>
+    </>
   );
 }
