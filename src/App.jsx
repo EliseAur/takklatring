@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Header, Footer } from "./components";
-import { Home, Services, ServiceDetail, Projects, ProjectDetail } from "./pages";
+import { Home, Services, ServiceDetail, Projects, ProjectDetail, Contact } from "./pages";
 import { useEffect, useState } from "react";
 import { getFooterData, getFrontPageHero } from "./api/wp";
 
@@ -42,6 +42,7 @@ function App() {
             <Route path="/tjenester/:slug" element={<ServiceDetail />} />
             <Route path="/prosjekter" element={<Projects />} />
             <Route path="/prosjekter/:slug" element={<ProjectDetail />} />
+            <Route path="/kontakt" element={<Contact />} />
           </Routes>
         </main>
         <Footer footer={footer} hero={hero} />
