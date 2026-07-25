@@ -10,6 +10,7 @@ import {
   PageLoader,
 } from "../components";
 import { useServiceDetail } from "../hooks/useServiceDetail";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 export default function ServiceDetail() {
   const { slug } = useParams();
@@ -17,6 +18,8 @@ export default function ServiceDetail() {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
 
   const forceError = false; // For testing av error-visning
+
+  useDocumentTitle(service?.title || "Services");
 
   useEffect(() => {
     if (!loading) {

@@ -11,6 +11,7 @@ import {
   ProjectBeforeAfterSection,
 } from "../components";
 import { useProjectDetail } from "../hooks/useProjectDetail";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { formatProjectDate } from "../utils/formatDate";
 
 export default function ProjectDetail() {
@@ -20,6 +21,8 @@ export default function ProjectDetail() {
 
   const forceError = false; // For testing av error-visning
   const forceEmpty = false;
+
+  useDocumentTitle(project?.title || "Projects");
 
   const formattedDate = formatProjectDate(project?.acf?.project_date);
 

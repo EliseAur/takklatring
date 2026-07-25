@@ -1,12 +1,15 @@
 import { useMemo, useState, useEffect } from "react";
 import { PageHeader, CardsSection, CardItem, ErrorAlertPage, PageLoader } from "../components";
 import { useServices } from "../hooks/useServices";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 export default function Services() {
   const { services, loading, error } = useServices();
   const [query, setQuery] = useState("");
 
   const forceError = false; // For testing av error-visning
+
+  useDocumentTitle("Services");
 
   useEffect(() => {
     if (!loading) {

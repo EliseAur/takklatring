@@ -1,6 +1,7 @@
 import { useMemo, useState, useEffect } from "react";
 import { PageHeader, CardsSection, CardItem, ErrorAlertPage, PageLoader } from "../components";
 import { useProjects } from "../hooks/useProjects";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 export default function Projects() {
   const { projects, loading, error } = useProjects();
@@ -8,6 +9,8 @@ export default function Projects() {
 
   const forceError = false; // For testing av error-visning
   const forceEmpty = false; // For testing av empty state
+
+  useDocumentTitle("Projects");
 
   const displayProjects = useMemo(() => {
     return forceEmpty ? [] : projects;

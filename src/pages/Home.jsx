@@ -9,6 +9,7 @@ import {
   PageLoader,
 } from "../components";
 import { useFrontPageHero } from "../hooks/useFrontPageHero";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { useEffect } from "react";
 
 /**
@@ -27,6 +28,8 @@ export default function Home() {
   const { hero, loading, error } = useFrontPageHero();
 
   const forceError = false; // For testing av error-visning
+
+  useDocumentTitle("Home");
 
   useEffect(() => {
     if (!loading) {

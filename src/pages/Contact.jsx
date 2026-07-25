@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { PageHeader, FormAlert } from "../components";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -15,6 +16,8 @@ export default function Contact() {
   const [statusMessage, setStatusMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const formRef = useRef(null);
+
+  useDocumentTitle("Contact");
 
   useEffect(() => {
     window.scrollTo(0, 0);
