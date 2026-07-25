@@ -15,6 +15,7 @@ export default function About() {
       <PageHeader
         eyebrow="Om oss"
         title="Trygt arbeid i høyden"
+        divClassName="max-w-4xl mx-auto px-6 lg:px-10 py-12"
         description="Tak og FasadeKlatring AS leverer arbeid på tak og fasader med fokus på sikkerhet, kvalitet og ryddig gjennomføring."
         actions={
           <>
@@ -35,7 +36,7 @@ export default function About() {
       />
 
       <section className="bg-neutral-100 py-12">
-        <div className="max-w-4xl mx-auto px-6 lg:px-10 space-y-6 text-neutral-800">
+        <div className="max-w-4xl mx-auto px-6 lg:px-10 space-y-6 text-neutral-800 text-left">
           <p>
             Vi hjelper kunder med oppdrag på tak og fasader der det kreves trygg tilgang,
             fagkunnskap og god planlegging. Målet er å levere løsninger som er praktiske, sikre og

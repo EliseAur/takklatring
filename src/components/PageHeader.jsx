@@ -6,6 +6,7 @@ export default function PageHeader({
   search,
   className = "bg-darkblue border-b",
   divClassName = "max-w-6xl mx-auto px-6 py-12",
+  actionsClassName = "",
 }) {
   return (
     <section className={className}>
@@ -16,7 +17,9 @@ export default function PageHeader({
 
         {description && <p className="mt-4 text-neutral-200 max-w-2xl">{description}</p>}
 
-        {actions && <div className="mt-8 flex flex-wrap gap-3">{actions}</div>}
+        {actions && (
+          <div className={`mt-8 flex flex-wrap gap-3 ${actionsClassName}`}>{actions}</div>
+        )}
 
         {/* Search */}
         {search && (
