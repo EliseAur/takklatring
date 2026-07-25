@@ -27,7 +27,7 @@ export default function NavMobile() {
           to="/kontakt"
           className="border-b-3 border-orange px-2 mx-5 transition-all duration-200 hover:border-b-4"
         >
-          Få tilbud
+          Bestilling
         </Link>
         <Link
           to="/prosjekter"

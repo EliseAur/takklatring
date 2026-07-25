@@ -11,7 +11,7 @@ import {
   ProjectBeforeAfterSection,
 } from "../components";
 import { useProjectDetail } from "../hooks/useProjectDetail";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import { useSeoMeta } from "../hooks/useSeoMeta";
 import { formatProjectDate } from "../utils/formatDate";
 
 export default function ProjectDetail() {
@@ -22,7 +22,46 @@ export default function ProjectDetail() {
   const forceError = false; // For testing av error-visning
   const forceEmpty = false;
 
-  useDocumentTitle(project?.title || "Projects");
+  const seoDescription =
+    project?.acf?.project_short_text ||
+    `Se prosjektet ${project?.title || "vårt"} innen tak- og fasadeklatring.`;
+
+  const breadcrumbSchema = useMemo(() => {
+    if (!project?.title) return null;
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Hjem",
+          item: "https://takklatring.no/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Prosjekter",
+          item: "https://takklatring.no/prosjekter",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: project.title,
+          item: `https://takklatring.no/prosjekter/${project.slug}`,
+        },
+      ],
+    };
+  }, [project]);
+
+  useSeoMeta({
+    title: project?.title || "Prosjekt ikke funnet",
+    description: seoDescription,
+    canonicalPath: project?.slug ? `/prosjekter/${project.slug}` : "/prosjekter",
+    image: project?.image_url || undefined,
+    schema: breadcrumbSchema,
+  });
 
   const formattedDate = formatProjectDate(project?.acf?.project_date);
 

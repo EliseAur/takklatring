@@ -9,8 +9,24 @@ import {
   PageLoader,
 } from "../components";
 import { useFrontPageHero } from "../hooks/useFrontPageHero";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import { useSeoMeta } from "../hooks/useSeoMeta";
 import { useEffect } from "react";
+
+const HOME_SCHEMA = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Tak og FasadeKlatring AS",
+    url: "https://takklatring.no",
+    description: "Tak- og fasadeklatring med fokus på trygghet, kvalitet og arbeid i høyden.",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Tak og FasadeKlatring AS",
+    url: "https://takklatring.no",
+  },
+];
 
 /**
  * Home page component that renders the hero and other main sections of the website.
@@ -29,7 +45,13 @@ export default function Home() {
 
   const forceError = false; // For testing av error-visning
 
-  useDocumentTitle("Home");
+  useSeoMeta({
+    title: "Tak- og fasadeklatring i høyden",
+    description:
+      "Profesjonell tak- og fasadeklatring for vedlikehold, inspeksjon og arbeid i høyden.",
+    canonicalPath: "/",
+    schema: HOME_SCHEMA,
+  });
 
   useEffect(() => {
     if (!loading) {

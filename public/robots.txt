@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /innhold/wp-admin/
+Disallow: /innhold/wp-login.php
+Disallow: /innhold/xmlrpc.php
+
+Sitemap: https://takklatring.no/sitemap.xml
