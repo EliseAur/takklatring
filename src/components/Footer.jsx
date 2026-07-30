@@ -24,24 +24,24 @@ export default function Footer({ hero, footer }) {
           <h4 className="font-headings text-lg font-bold text-neutral-100 mb-2">Navigasjon</h4>
           <ul className="space-y-2 text-neutral-200 marker:text-orange list-disc list-inside">
             <li>
-              <a href="/tjenester" className="hover:text-orange transition">
+              <Link to="/tjenester" className="hover:text-orange transition">
                 Tjenester
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/prosjekter" className="hover:text-orange transition">
+              <Link to="/prosjekter" className="hover:text-orange transition">
                 Prosjekter
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/bestilling" className="hover:text-orange transition">
+              <Link to="/kontakt" className="hover:text-orange transition">
                 Bestilling
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/om-oss" className="hover:text-orange transition">
+              <Link to="/om-oss" className="hover:text-orange transition">
                 Om oss
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

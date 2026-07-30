@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { PageHeader, FormAlert } from "../components";
+import { useSeoMeta } from "../hooks/useSeoMeta";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -15,6 +16,13 @@ export default function Contact() {
   const [statusMessage, setStatusMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const formRef = useRef(null);
+
+  useSeoMeta({
+    title: "Kontakt oss",
+    description:
+      "Ta kontakt for befaring, tilbud eller spørsmål om tak- og fasadeklatring og arbeid i høyden.",
+    canonicalPath: "/kontakt",
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);

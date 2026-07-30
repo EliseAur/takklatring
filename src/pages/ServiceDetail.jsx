@@ -10,6 +10,7 @@ import {
   PageLoader,
 } from "../components";
 import { useServiceDetail } from "../hooks/useServiceDetail";
+import { useSeoMeta } from "../hooks/useSeoMeta";
 
 export default function ServiceDetail() {
   const { slug } = useParams();
@@ -17,6 +18,47 @@ export default function ServiceDetail() {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
 
   const forceError = false; // For testing av error-visning
+
+  const seoDescription =
+    service?.acf?.tjeneste_short_description ||
+    `Les mer om ${service?.title || "denne tjenesten"} innen tak- og fasadeklatring.`;
+
+  const breadcrumbSchema = useMemo(() => {
+    if (!service?.title) return null;
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Hjem",
+          item: "https://takklatring.no/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Tjenester",
+          item: "https://takklatring.no/tjenester",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: service.title,
+          item: `https://takklatring.no/tjenester/${service.slug}`,
+        },
+      ],
+    };
+  }, [service]);
+
+  useSeoMeta({
+    title: service?.title || "Tjeneste ikke funnet",
+    description: seoDescription,
+    canonicalPath: service?.slug ? `/tjenester/${service.slug}` : "/tjenester",
+    image: service?.image_url || undefined,
+    schema: breadcrumbSchema,
+  });
 
   useEffect(() => {
     if (!loading) {

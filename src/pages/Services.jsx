@@ -1,12 +1,20 @@
 import { useMemo, useState, useEffect } from "react";
 import { PageHeader, CardsSection, CardItem, ErrorAlertPage, PageLoader } from "../components";
 import { useServices } from "../hooks/useServices";
+import { useSeoMeta } from "../hooks/useSeoMeta";
 
 export default function Services() {
   const { services, loading, error } = useServices();
   const [query, setQuery] = useState("");
 
   const forceError = false; // For testing av error-visning
+
+  useSeoMeta({
+    title: "Tjenester",
+    description:
+      "Se oversikt over tjenester innen tak- og fasadeklatring, arbeid i høyden og profesjonelt vedlikehold.",
+    canonicalPath: "/tjenester",
+  });
 
   useEffect(() => {
     if (!loading) {
