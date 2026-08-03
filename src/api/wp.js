@@ -184,3 +184,25 @@ export async function getProjectBySlug(slug) {
     after_image_alt: afterImage?.alt || "",
   };
 }
+
+export async function getAboutUsContent() {
+  const res = await fetch(`${WP_BASE}/pages?slug=om-oss&_embed=1`);
+  if (!res.ok) throw new Error("Kunne ikke hente Om oss-siden fra WP");
+
+  const data = await res.json();
+  const item = data?.[0];
+  if (!item) return null;
+
+  const image = getFeaturedImage(item);
+
+  return {
+    id: item.id,
+    slug: item.slug,
+    title: item.title?.rendered ?? "",
+    content: item.content?.rendered ?? "",
+    acf: item.acf ?? {},
+    about_us_intro: item.acf?.about_us_intro ?? "",
+    image_url: image.url,
+    image_alt: image.alt,
+  };
+}
