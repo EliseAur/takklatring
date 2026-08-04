@@ -110,7 +110,7 @@ export default function Contact() {
           <>
             <Link
               to="/tjenester"
-              className="inline-flex text-center border border-neutral-100/40 text-neutral-100 font-headings tracking-wider uppercase text-sm lg:text-md px-6 py-3 rounded-sm hover:border-orange transition"
+              className="inline-flex text-center border border-orange bg-orange text-darkblue font-headings font-bold tracking-wider uppercase text-sm lg:text-md px-6 py-3 rounded-sm drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] hover:shadow-xl"
             >
               Se tjenester
             </Link>
