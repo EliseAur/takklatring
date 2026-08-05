@@ -21,7 +21,7 @@ export default function ServiceDetail() {
 
   const seoDescription =
     service?.acf?.tjeneste_short_description ||
-    `Les mer om ${service?.title || "denne tjenesten"} innen tak- og fasadeklatring.`;
+    `Les mer om ${service?.title || "denne tjenesten"} som tilbys av Tak- og Fasadeklatring`;
 
   const breadcrumbSchema = useMemo(() => {
     if (!service?.title) return null;
