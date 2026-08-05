@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
-const SITE_NAME = "Tak og FasadeKlatring AS";
+const SITE_NAME = "Tak og Fasadeklatring AS";
 const SITE_URL = "https://takklatring.no";
 const DEFAULT_DESCRIPTION =
-  "Tak- og fasadeklatring med fokus på trygghet, kvalitet og arbeid i høyden.";
+  "Tak- og Fasadeklatring tilbyr taktekking, tilkomstteknikk og håndverk i høyden med fokus på trygghet og kvalitet. Vi utfører inspeksjon, vedlikehold og spesialoppdrag på tak og fasader.";
 
 function setMetaTag(key, content, isProperty = false) {
   const selector = isProperty ? `meta[property="${key}"]` : `meta[name="${key}"]`;

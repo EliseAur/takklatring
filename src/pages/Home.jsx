@@ -47,9 +47,9 @@ export default function Home() {
   const forceError = false; // For testing av error-visning
 
   useSeoMeta({
-    title: "Tak- og fasadeklatring i høyden",
+    title: "Hjem",
     description:
-      "Profesjonell tak- og fasadeklatring for vedlikehold, inspeksjon og arbeid i høyden.",
+      "Tak- og Fasadeklatring tilbyr taktekking, tilkomstteknikk og håndverk i høyden med fokus på trygghet og kvalitet. Vi utfører inspeksjon, vedlikehold og spesialoppdrag på tak og fasader.",
     canonicalPath: "/",
     schema: HOME_SCHEMA,
   });

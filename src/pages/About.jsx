@@ -21,7 +21,7 @@ export default function About() {
   const title = aboutUsContent?.title || "Om oss";
   const description =
     aboutUsContent?.acf?.about_us_intro ||
-    "Tak og FasadeKlatring AS leverer profesjonelt arbeid på tak og fasader med fokus på sikkerhet og kvalitet.";
+    "Tak og Fasadeklatring AS leverer profesjonelt arbeid på tak og fasader med fokus på sikkerhet og kvalitet.";
 
   useSeoMeta({
     title,

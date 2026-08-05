@@ -17,7 +17,7 @@ import iconVerified from "../images/icon-verified-orange.svg";
  * )
  */
 export default function Hero({ hero }) {
-  const title = hero?.hero_title || "Tak- og fasadeklatring";
+  const title = hero?.hero_title || "Tak- og Fasadeklatring";
   const subtitle = hero?.hero_subtitle || "Alt av håndverk i høyden";
   const descriptionDesktop = hero?.hero_description_desktop || "";
   const descriptionMobile = hero?.hero_description_mobile || "";
