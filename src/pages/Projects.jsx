@@ -13,7 +13,7 @@ export default function Projects() {
   useSeoMeta({
     title: "Prosjekter",
     description:
-      "Se utvalgte prosjekter innen tak- og fasadeklatring, arbeid i høyden og utført vedlikehold.",
+      "Se våre utvalgte prosjekter og blogg for å bli kjent med arbeidet vi utfører på tak og fasader, fra inspeksjon og vedlikehold til spesialoppdrag",
     canonicalPath: "/prosjekter",
   });
 

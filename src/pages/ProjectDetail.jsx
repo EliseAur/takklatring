@@ -24,7 +24,7 @@ export default function ProjectDetail() {
 
   const seoDescription =
     project?.acf?.project_short_text ||
-    `Se prosjektet ${project?.title || "vårt"} innen tak- og fasadeklatring.`;
+    `Se prosjektet ${project?.title || "vårt"} fra Tak- og Fasadeklatring`;
 
   const breadcrumbSchema = useMemo(() => {
     if (!project?.title) return null;

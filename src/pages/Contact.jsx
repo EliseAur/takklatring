@@ -20,7 +20,7 @@ export default function Contact() {
   useSeoMeta({
     title: "Kontakt oss",
     description:
-      "Ta kontakt for befaring, tilbud eller spørsmål om tak- og fasadeklatring og arbeid i høyden.",
+      "Ta kontakt for befaring, tilbud eller spørsmål om tak- og fasadearbeid og arbeid i høyden.",
     canonicalPath: "/kontakt",
   });
 

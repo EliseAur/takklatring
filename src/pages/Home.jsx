@@ -16,14 +16,15 @@ const HOME_SCHEMA = [
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Tak og FasadeKlatring AS",
+    name: "Tak og Fasadeklatring AS",
     url: "https://takklatring.no",
-    description: "Tak- og fasadeklatring med fokus på trygghet, kvalitet og arbeid i høyden.",
+    description:
+      "Tak- og Fasadeklatring tilbyr taktekking, tilkomstteknikk og håndverk i høyden med fokus på trygghet og kvalitet. Vi utfører inspeksjon, vedlikehold og spesialoppdrag på tak og fasader.",
   },
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Tak og FasadeKlatring AS",
+    name: "Tak og Fasadeklatring AS",
     url: "https://takklatring.no",
   },
 ];

@@ -11,8 +11,7 @@ export default function Services() {
 
   useSeoMeta({
     title: "Tjenester",
-    description:
-      "Se oversikt over tjenester innen tak- og fasadeklatring, arbeid i høyden og profesjonelt vedlikehold.",
+    description: "Se hva vi tilbyr av tjenester innen tak- og fasadearbeid og arbeid i høyden.",
     canonicalPath: "/tjenester",
   });
 
