@@ -4,6 +4,7 @@ import {
   ProjectsPreview,
   BookingSection,
   ReviewsSection,
+  ReviewInviteSection,
   PageHeader,
   ErrorAlertPage,
   PageLoader,
@@ -80,6 +81,7 @@ export default function Home() {
       <BookingSection />
       <ProjectsPreview />
       <ReviewsSection />
+      <ReviewInviteSection />
     </>
   );
 }
