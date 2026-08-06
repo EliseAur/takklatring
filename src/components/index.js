@@ -8,6 +8,7 @@ import ServicesPreview from "./ServicesPreview";
 import ProjectsPreview from "./ProjectsPreview";
 import BookingSection from "./BookingSection";
 import ReviewsSection from "./ReviewsSection";
+import ReviewInviteSection from "./ReviewInviteSection";
 import Footer from "./Footer";
 import PageHeader from "./PageHeader";
 import CardsSection from "./CardsSection";
@@ -29,6 +30,7 @@ export {
   ProjectsPreview,
   BookingSection,
   ReviewsSection,
+  ReviewInviteSection,
   Footer,
   PageHeader,
   CardsSection,

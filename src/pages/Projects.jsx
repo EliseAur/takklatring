@@ -85,7 +85,7 @@ export default function Projects() {
             ))}
           </div>
         )}
-        emptyMessage="Ingen prosjekter er tilgjengelige nå. Ta gjerne en titt innom senere. "
+        emptyMessage="Nettsiden er under utvikling. Derfor er ingen prosjekter er tilgjengelige nå. Ta gjerne en titt innom senere. "
         noResultsMessage="Ingen treff. Prøv et annet søk."
       />
     </main>
