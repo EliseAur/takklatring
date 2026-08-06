@@ -18,7 +18,7 @@ export default function About() {
 
   const forceError = false; // For testing av error-visning
 
-  const title = aboutUsContent?.title || "Om oss";
+  const title = "Om oss";
   const description =
     aboutUsContent?.acf?.about_us_intro ||
     "Tak og Fasadeklatring AS leverer profesjonelt arbeid på tak og fasader med fokus på sikkerhet og kvalitet.";
