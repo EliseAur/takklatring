@@ -110,13 +110,14 @@ export default function Contact() {
           <>
             <Link
               to="/tjenester"
-              className="inline-flex text-center border border-orange bg-orange text-darkblue font-headings font-bold tracking-wider uppercase text-sm lg:text-md px-6 py-3 rounded-sm drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] hover:shadow-xl"
+              className="inline-flex text-center border border-orange bg-orange text-darkblue font-headings uppercase text-sm tracking-wider lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold"
             >
               Se tjenester
             </Link>
+
             <Link
               to="/prosjekter"
-              className="inline-flex text-center border border-neutral-100/40 text-neutral-100 font-headings tracking-wider uppercase text-sm lg:text-md px-6 py-3 rounded-sm hover:border-orange transition"
+              className="inline-flex text-center border border-neutral-100/40 text-neutral-100 font-headings uppercase text-sm tracking-wider lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold"
             >
               Se prosjekter
             </Link>
@@ -142,7 +143,7 @@ export default function Contact() {
               <FormAlert message={statusMessage} type={isSuccess ? "success" : "error"} />
             )}
             <div className="mb-7">
-              <label htmlFor="name" className="block text-sm font-semibold text-darkblue mb-1">
+              <label htmlFor="name" className="block text-sm font-bold text-darkblue mb-1">
                 Navn
               </label>
               <input
@@ -156,7 +157,7 @@ export default function Contact() {
               />
             </div>
             <div className="mb-7">
-              <label htmlFor="email" className="block text-sm font-semibold text-darkblue mb-1">
+              <label htmlFor="email" className="block text-sm font-bold text-darkblue mb-1">
                 E-post
               </label>
               <input
@@ -170,7 +171,7 @@ export default function Contact() {
               />
             </div>
             <div className="mb-7">
-              <label htmlFor="phone" className="block text-sm font-semibold text-darkblue mb-1">
+              <label htmlFor="phone" className="block text-sm font-bold text-darkblue mb-1">
                 Telefon (valgfritt)
               </label>
               <input
@@ -183,7 +184,7 @@ export default function Contact() {
               />
             </div>
             <div className="mb-7">
-              <label htmlFor="subject" className="block text-sm font-semibold text-darkblue mb-1">
+              <label htmlFor="subject" className="block text-sm font-bold text-darkblue mb-1">
                 Emne
               </label>
               <input
@@ -197,7 +198,7 @@ export default function Contact() {
               />
             </div>
             <div className="mb-7">
-              <label htmlFor="message" className="block text-sm font-semibold text-darkblue mb-1">
+              <label htmlFor="message" className="block text-sm font-bold text-darkblue mb-1">
                 Melding
               </label>
               <textarea
@@ -210,10 +211,11 @@ export default function Contact() {
                 required
               />
             </div>
+
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-block bg-orange text-darkblue font-headings uppercase text-sm md:text-base font-bold py-3 px-6 rounded-sm hover:shadow-lg hover:scale-[1.01] transition disabled:opacity-60 disabled:cursor-not-allowed"
+              className="inline-block border border-orange bg-orange text-darkblue font-headings uppercase text-sm tracking-wider lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "Sender..." : "Send melding"}
             </button>
