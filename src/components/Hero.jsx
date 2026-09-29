@@ -45,11 +45,10 @@ export default function Hero({ hero }) {
           <h1 className="text-neutral-100 font-headings text-5xl md:text-6xl mb-2 lg:mb-4 break-words md:leading-tight font-bold tracking-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
             {title}
           </h1>
-          <p className="text-neutral-100 font-body uppercase font-semibold text-md lg:text-lg max-w-[225px] lg:max-w-[255px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
+          <p className="text-neutral-100 font-body uppercase font-bold text-md lg:text-lg max-w-[225px] lg:max-w-[255px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
             {subtitle}
           </p>
           <div className="my-3 h-[3px] w-20 bg-orange rounded-sm" />
-
           <p className="text-neutral-100 hidden md:block font-body sm:text-md md:text-lg mb-7 font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
             {descriptionDesktop}
           </p>
@@ -68,17 +67,16 @@ export default function Hero({ hero }) {
               </div>
             ))}
           </div>
-
           <div className="flex flex-row gap-2 sm:gap-5">
             <Link
               to="/kontakt"
-              className="flex-1 text-center bg-orange text-darkblue font-headings uppercase tracking-wide text-md lg:text-lg font-bold py-3 px-6 rounded-sm hover:cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] hover:shadow-xl hover:scale-[1.02]"
+              className="flex-1 text-center border border-orange bg-orange text-darkblue font-headings uppercase tracking-wider text-md lg:text-lg px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] font-bold transition"
             >
               Få tilbud
             </Link>
             <Link
               to="/tjenester"
-              className="flex-1 text-center bg-neutral-100 text-darkblue font-headings uppercase tracking-wide text-md lg:text-lg font-bold py-3 px-6 rounded-sm hover:cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] hover:shadow-xl hover:scale-[1.02]"
+              className="flex-1 text-center border border-neutral-100/40 text-neutral-100 font-headings uppercase tracking-wider text-md lg:text-lg px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] font-bold transition"
             >
               Tjenester
             </Link>

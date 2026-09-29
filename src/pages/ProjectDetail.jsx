@@ -186,14 +186,14 @@ export default function ProjectDetail() {
             <div className="mt-5 flex gap-2 md:gap-3">
               <Link
                 to="/kontakt"
-                className="flex-1 text-center bg-orange text-darkblue font-headings uppercase text-sm lg:text-md tracking-wider font-bold py-3 px-6 rounded-sm hover:cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] hover:shadow-xl transition"
+                className="flex-1 text-center border border-orange bg-orange text-darkblue font-headings uppercase text-sm tracking-wider lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold"
               >
                 Få tilbud
               </Link>
 
               <Link
                 to="/tjenester"
-                className="flex-1 text-center border border-neutral-100/40 text-neutral-100 font-headings font-bold tracking-wider uppercase text-sm lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] hover:shadow-xl hover:border-orange transition"
+                className="flex-1 text-center border border-neutral-100/40 text-neutral-100 font-headings uppercase text-sm tracking-wider lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold"
               >
                 Alle tjenester
               </Link>

@@ -99,7 +99,7 @@ export default function About() {
       <section id="top" className="bg-darkblue">
         <div className="max-w-4xl mx-auto md:px-6 md:py-12 lg:py-16 grid gap-5 lg:grid-cols-2 lg:items-center">
           <div className="w-full max-w-4xl px-5 pt-8 pb-4 mx-auto md:px-14 lg:px-4 lg:pb-5 lg:pt-0">
-            <p className="text-orange font-bold uppercase tracking-wide">Tjeneste</p>
+            <p className="text-orange font-bold uppercase tracking-wide">Om oss</p>
             <h1 className="text-4xl md:text-[44px] font-headings font-bold text-neutral-100 mt-2">
               {aboutUsContent.title}
             </h1>
@@ -116,16 +116,16 @@ export default function About() {
             <div className="mt-5 flex gap-2 md:gap-3">
               <Link
                 to="/kontakt"
-                className="flex-1 text-center bg-orange text-darkblue font-headings uppercase text-sm lg:text-md tracking-wider font-bold py-3 px-6 rounded-sm hover:cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] hover:shadow-xl transition"
+                className="flex-1 text-center border border-orange bg-orange text-darkblue font-headings uppercase text-sm tracking-wider lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold"
               >
                 Få tilbud
               </Link>
 
               <Link
                 to="/tjenester"
-                className="flex-1 text-center border border-neutral-100/40 text-neutral-100 font-headings font-bold tracking-wider uppercase text-sm lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] hover:shadow-xl hover:border-orange transition"
+                className="flex-1 text-center border border-neutral-100/40 text-neutral-100 font-headings uppercase text-sm tracking-wider lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold"
               >
-                Alle tjenester
+                Se tjenester
               </Link>
             </div>
           </div>

@@ -14,16 +14,14 @@ export default function BookingSection() {
           <h2 className="text-3xl md:text-4xl font-headings font-bold text-darkblue mb-4">
             Få et uforpliktende tilbud
           </h2>
-
           <p className="text-darkblue mb-2 text-xl font-bold">Usikker på hva som trengs?</p>
           <p className="text-neutral-800 mb-8 text-lg">
             Vi tar gjerne en prat og hjelper deg med å finne riktig løsning for ditt tak eller din
             fasade.
           </p>
-
           <a
             href="/kontakt"
-            className="inline-block text-center bg-orange text-darkblue font-headings uppercase text-md lg:text-lg font-bold py-3 px-12 rounded-sm hover:cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)] hover:shadow-xl hover:scale-[1.01]"
+            className="inline-block text-center border border-orange bg-orange text-darkblue font-headings uppercase tracking-wider text-md lg:text-lg px-12 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold"
           >
             Få tilbud
           </a>

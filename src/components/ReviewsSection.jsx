@@ -30,9 +30,7 @@ export default function ReviewsSection() {
               className="bg-white p-8 rounded-md shadow-sm border-l-4 border-orange"
             >
               <p className="text-neutral-800 italic leading-relaxed md:text-lg">“{review.quote}”</p>
-              <footer className="mt-4 font-semibold text-darkblue md:text-lg">
-                – {review.name}
-              </footer>
+              <footer className="mt-4 font-bold text-darkblue md:text-lg">– {review.name}</footer>
             </blockquote>
           ))}
         </div>
