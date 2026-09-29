@@ -1,4 +1,4 @@
-import { MessageCard } from "./index";
+import MessageCard from "./MessageCard";
 
 export default function CardsSection({
   items,

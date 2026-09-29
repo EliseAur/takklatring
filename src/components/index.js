@@ -2,7 +2,6 @@ import Header from "./Header";
 import NavMobile from "./NavMobile";
 import NavDesktop from "./NavDesktop";
 import Hero from "./Hero";
-import ServiceCard from "./ServiceCard";
 import CardItem from "./CardItem";
 import ServicesPreview from "./ServicesPreview";
 import ProjectsPreview from "./ProjectsPreview";
@@ -24,7 +23,6 @@ export {
   NavDesktop,
   NavMobile,
   Hero,
-  ServiceCard,
   CardItem,
   ServicesPreview,
   ProjectsPreview,
