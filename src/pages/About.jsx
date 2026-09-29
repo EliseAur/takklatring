@@ -114,17 +114,11 @@ export default function About() {
             </a>
 
             <div className="mt-5 flex gap-2 md:gap-3">
-              <Link
-                to="/kontakt"
-                className="flex-1 text-center border border-orange bg-orange text-darkblue font-headings uppercase text-sm tracking-wider lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold"
-              >
+              <Link to="/kontakt" className="btn-primary flex-1">
                 Få tilbud
               </Link>
 
-              <Link
-                to="/tjenester"
-                className="flex-1 text-center border border-neutral-100/40 text-neutral-100 font-headings uppercase text-sm tracking-wider lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold"
-              >
+              <Link to="/tjenester" className="btn-secondary flex-1">
                 Se tjenester
               </Link>
             </div>

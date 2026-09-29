@@ -34,6 +34,35 @@ body {
 }
 
 @layer components {
+  .btn-primary,
+  .btn-secondary {
+    @apply inline-flex items-center justify-center text-center font-headings uppercase tracking-wider text-sm lg:text-base px-6 py-3 rounded-sm transition font-bold hover:scale-[1.01] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply border border-orange bg-orange text-darkblue;
+  }
+
+  .btn-secondary {
+    @apply border border-neutral-100/40 bg-transparent text-neutral-100;
+  }
+
+  .btn-primary-lg {
+    @apply text-base lg:text-lg px-12;
+  }
+
+  .btn-review {
+    @apply border-transparent bg-orange-200;
+  }
+
+  .btn-primary:disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
+
+  .btn-primary:disabled:hover {
+    transform: none;
+  }
+
   .wp-content h2 {
     @apply text-2xl md:text-3xl font-headings text-darkblue mt-10 mb-4;
   }

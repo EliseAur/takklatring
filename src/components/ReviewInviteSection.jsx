@@ -36,7 +36,7 @@ export default function ReviewInviteSection() {
             href="https://g.page/r/CY56ipKU5LMkEBI/review"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block text-center bg-orange-200 text-darkblue font-headings uppercase tracking-wider text-md lg:text-lg px-12 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold"
+            className="btn-primary btn-primary-lg btn-review"
           >
             <FontAwesomeIcon icon={faGoogle} className="mr-4 text-2xl text-orange" />
             Gi en anmeldelse
