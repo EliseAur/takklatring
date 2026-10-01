@@ -8,6 +8,7 @@ import {
   PageHeader,
   ErrorAlertPage,
   PageLoader,
+  DetailHero,
   ProjectBeforeAfterSection,
 } from "../components";
 import { useProjectDetail } from "../hooks/useProjectDetail";
@@ -161,50 +162,31 @@ export default function ProjectDetail() {
 
   return (
     <>
-      <section id="top" className="bg-darkblue">
-        <div className="max-w-4xl  mx-auto md:px-6 md:py-12 lg:py-16 grid gap-5 lg:grid-cols-2 lg:items-center">
-          <div className="w-full max-w-4xl px-5 pt-8 pb-4 mx-auto md:px-14 lg:px-4 lg:pb-5 lg:pt-0">
-            <p className="text-orange font-bold uppercase tracking-wide flex-1">Prosjekt</p>
-            {formattedDate && (
-              <p className="text-neutral-300 text-sm mt-1">
-                {formattedDate} - {project?.acf?.project_location}
-              </p>
-            )}
-            <h1 className="text-4xl md:text-[44px] font-headings font-bold text-neutral-100 mt-2">
-              {project.title}
-            </h1>
-            <div className="mt-4 h-1 w-20 bg-orange rounded-sm" />
+      <DetailHero
+        eyebrow="Prosjekt"
+        title={project.title}
+        meta={
+          formattedDate && (
+            <p className="text-neutral-300 text-sm mt-1">
+              {formattedDate} - {project?.acf?.project_location}
+            </p>
+          )
+        }
+        description={project?.acf?.project_short_text}
+        imageUrl={project.image_url}
+        imageAlt={project.image_alt || ""}
+        actions={
+          <>
+            <Link to="/kontakt" className="btn-primary flex-1">
+              Få tilbud
+            </Link>
 
-            {project?.acf?.project_short_text && (
-              <p className="mt-3 text-lg text-neutral-300">{project.acf.project_short_text}</p>
-            )}
-
-            <a href="#content" className="mt-3 inline-block text-white font-bold cursor-pointer">
-              Les mer →
-            </a>
-
-            <div className="mt-5 flex gap-2 md:gap-3">
-              <Link to="/kontakt" className="btn-primary flex-1">
-                Få tilbud
-              </Link>
-
-              <Link to="/tjenester" className="btn-secondary flex-1">
-                Alle tjenester
-              </Link>
-            </div>
-          </div>
-
-          {project.image_url && (
-            <div className="overflow-hidden md:px-14 lg:px-4">
-              <img
-                src={project.image_url}
-                alt={project.image_alt || ""}
-                className="w-full aspect-[4/3] sm:aspect-[3/4] object-cover object-center max-h-[500px] md:rounded-md md:shadow-md"
-              />
-            </div>
-          )}
-        </div>
-      </section>
+            <Link to="/tjenester" className="btn-secondary flex-1">
+              Alle tjenester
+            </Link>
+          </>
+        }
+      />
 
       <section
         id="content"
