@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 import {
   ErrorAlertPage,
   PageHeader,
@@ -33,12 +32,6 @@ export default function About() {
     canonicalPath: "/om-oss",
     image: aboutUsContent?.image_url || undefined,
   });
-
-  useEffect(() => {
-    if (!loading) {
-      window.scrollTo(0, 0);
-    }
-  }, [loading]);
 
   if (loading) {
     return <PageLoader />;

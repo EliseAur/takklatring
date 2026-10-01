@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Header, Footer } from "./components";
+import { Header, Footer, ScrollToTop } from "./components";
 import { Home, Services, ServiceDetail, Projects, ProjectDetail, Contact, About } from "./pages";
 import { useEffect, useState } from "react";
 import { getFooterData, getFrontPageHero } from "./api/wp";
@@ -33,6 +33,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex flex-col flex-1">

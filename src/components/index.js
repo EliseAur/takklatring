@@ -5,6 +5,7 @@ import Hero from "./Hero";
 import DetailHero from "./DetailHero";
 import ContentLightbox from "./ContentLightbox";
 import WpContentSection from "./WpContentSection";
+import ScrollToTop from "./ScrollToTop";
 import CardItem from "./CardItem";
 import ServicesPreview from "./ServicesPreview";
 import ProjectsPreview from "./ProjectsPreview";
@@ -29,6 +30,7 @@ export {
   DetailHero,
   ContentLightbox,
   WpContentSection,
+  ScrollToTop,
   CardItem,
   ServicesPreview,
   ProjectsPreview,

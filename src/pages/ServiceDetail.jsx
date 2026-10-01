@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import {
   BookingSection,
   ReviewsSection,
@@ -63,12 +63,6 @@ export default function ServiceDetail() {
     image: service?.image_url || undefined,
     schema: breadcrumbSchema,
   });
-
-  useEffect(() => {
-    if (!loading) {
-      window.scrollTo(0, 0);
-    }
-  }, [loading]);
 
   if (loading) {
     return <PageLoader />;

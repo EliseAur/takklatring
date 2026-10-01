@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { PageHeader, FormAlert } from "../components";
 import { useSeoMeta } from "../hooks/useSeoMeta";
@@ -23,10 +23,6 @@ export default function Contact() {
       "Ta kontakt for befaring, tilbud eller spørsmål om tak- og fasadearbeid og arbeid i høyden.",
     canonicalPath: "/kontakt",
   });
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   function handleChange(e) {
     const { name, value } = e.target;

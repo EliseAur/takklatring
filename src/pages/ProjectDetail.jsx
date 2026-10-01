@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import {
   BookingSection,
   ReviewsSection,
@@ -65,12 +65,6 @@ export default function ProjectDetail() {
   });
 
   const formattedDate = formatProjectDate(project?.acf?.project_date);
-
-  useEffect(() => {
-    if (!loading) {
-      window.scrollTo(0, 0);
-    }
-  }, [loading]);
 
   const beforeAfterSlides = useMemo(() => {
     const items = [];

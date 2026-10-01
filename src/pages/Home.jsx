@@ -11,7 +11,6 @@ import {
 } from "../components";
 import { useFrontPageHero } from "../hooks/useFrontPageHero";
 import { useSeoMeta } from "../hooks/useSeoMeta";
-import { useEffect } from "react";
 
 const HOME_SCHEMA = [
   {
@@ -54,12 +53,6 @@ export default function Home() {
     canonicalPath: "/",
     schema: HOME_SCHEMA,
   });
-
-  useEffect(() => {
-    if (!loading) {
-      window.scrollTo(0, 0);
-    }
-  }, [loading]);
 
   if (loading) {
     return <PageLoader />;

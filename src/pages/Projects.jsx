@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { PageHeader, CardsSection, CardItem, ErrorAlertPage, PageLoader } from "../components";
 import { useProjects } from "../hooks/useProjects";
 import { useSeoMeta } from "../hooks/useSeoMeta";
@@ -20,12 +20,6 @@ export default function Projects() {
   const displayProjects = useMemo(() => {
     return forceEmpty ? [] : projects;
   }, [forceEmpty, projects]);
-
-  useEffect(() => {
-    if (!loading) {
-      window.scrollTo(0, 0);
-    }
-  }, [loading]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
