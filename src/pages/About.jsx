@@ -1,21 +1,23 @@
 import { Link } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect } from "react";
 import {
   ErrorAlertPage,
   PageHeader,
   PageLoader,
   DetailHero,
+  ContentLightbox,
   BookingSection,
   ReviewsSection,
 } from "../components";
 import { useAboutUsContent } from "../hooks/useAboutUsContent";
 import { useSeoMeta } from "../hooks/useSeoMeta";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
+import { useGalleryLightbox } from "../hooks/useGalleryLightbox";
 
 export default function About() {
   const { aboutUsContent, loading, error } = useAboutUsContent();
-  const [lightboxIndex, setLightboxIndex] = useState(-1);
+  const { slides, lightboxIndex, handleContentClick, closeLightbox } = useGalleryLightbox(
+    aboutUsContent?.content,
+  );
 
   const forceError = false; // For testing av error-visning
 
@@ -36,42 +38,6 @@ export default function About() {
       window.scrollTo(0, 0);
     }
   }, [loading]);
-
-  const slides = useMemo(() => {
-    if (!aboutUsContent?.content) return [];
-
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(aboutUsContent.content, "text/html");
-
-    const figures = Array.from(doc.querySelectorAll(".wp-block-gallery .wp-block-image"));
-
-    return figures.map((figure) => {
-      const img = figure.querySelector("img");
-      const caption = figure.querySelector("figcaption");
-
-      return {
-        src: img?.getAttribute("src") || img?.src,
-        alt: img?.getAttribute("alt") || "",
-        caption: caption?.textContent || "",
-      };
-    });
-  }, [aboutUsContent?.content]);
-
-  const handleContentClick = (e) => {
-    const figure = e.target.closest(".wp-block-gallery .wp-block-image");
-    if (!figure) return;
-
-    const allFigures = Array.from(
-      e.currentTarget.querySelectorAll(".wp-block-gallery .wp-block-image"),
-    );
-
-    const clickedIndex = allFigures.findIndex((item) => item === figure);
-
-    if (clickedIndex >= 0) {
-      e.preventDefault();
-      setLightboxIndex(clickedIndex);
-    }
-  };
 
   if (loading) {
     return <PageLoader />;
@@ -133,31 +99,7 @@ export default function About() {
       <BookingSection />
       <ReviewsSection />
 
-      <Lightbox
-        open={lightboxIndex >= 0}
-        close={() => setLightboxIndex(-1)}
-        index={lightboxIndex}
-        slides={slides}
-        render={{
-          slide: ({ slide }) => (
-            <div className="flex justify-center items-center h-full w-full">
-              <div className="flex flex-col items-center max-w-[90vw]">
-                <img
-                  src={slide.src}
-                  alt={slide.alt}
-                  className="max-h-[80vh] w-auto object-contain rounded-t-sm"
-                />
-
-                {slide.caption && (
-                  <div className="w-full bg-darkblue text-white text-sm px-4 py-2 text-center rounded-b-sm">
-                    {slide.caption}
-                  </div>
-                )}
-              </div>
-            </div>
-          ),
-        }}
-      />
+      <ContentLightbox index={lightboxIndex} slides={slides} onClose={closeLightbox} />
     </main>
   );
 }

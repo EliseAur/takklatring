@@ -1,7 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
+import { useEffect, useMemo } from "react";
 import {
   BookingSection,
   ReviewsSection,
@@ -9,14 +7,18 @@ import {
   ErrorAlertPage,
   PageLoader,
   DetailHero,
+  ContentLightbox,
 } from "../components";
 import { useServiceDetail } from "../hooks/useServiceDetail";
 import { useSeoMeta } from "../hooks/useSeoMeta";
+import { useGalleryLightbox } from "../hooks/useGalleryLightbox";
 
 export default function ServiceDetail() {
   const { slug } = useParams();
   const { service, loading, error } = useServiceDetail(slug);
-  const [lightboxIndex, setLightboxIndex] = useState(-1);
+  const { slides, lightboxIndex, handleContentClick, closeLightbox } = useGalleryLightbox(
+    service?.content,
+  );
 
   const forceError = false; // For testing av error-visning
 
@@ -66,42 +68,6 @@ export default function ServiceDetail() {
       window.scrollTo(0, 0);
     }
   }, [loading]);
-
-  const slides = useMemo(() => {
-    if (!service?.content) return [];
-
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(service.content, "text/html");
-
-    const figures = Array.from(doc.querySelectorAll(".wp-block-gallery .wp-block-image"));
-
-    return figures.map((figure) => {
-      const img = figure.querySelector("img");
-      const caption = figure.querySelector("figcaption");
-
-      return {
-        src: img?.getAttribute("src") || img?.src,
-        alt: img?.getAttribute("alt") || "",
-        caption: caption?.textContent || "",
-      };
-    });
-  }, [service?.content]);
-
-  const handleContentClick = (e) => {
-    const figure = e.target.closest(".wp-block-gallery .wp-block-image");
-    if (!figure) return;
-
-    const allFigures = Array.from(
-      e.currentTarget.querySelectorAll(".wp-block-gallery .wp-block-image"),
-    );
-
-    const clickedIndex = allFigures.findIndex((item) => item === figure);
-
-    if (clickedIndex >= 0) {
-      e.preventDefault();
-      setLightboxIndex(clickedIndex);
-    }
-  };
 
   if (loading) {
     return <PageLoader />;
@@ -162,31 +128,7 @@ export default function ServiceDetail() {
       <BookingSection />
       <ReviewsSection />
 
-      <Lightbox
-        open={lightboxIndex >= 0}
-        close={() => setLightboxIndex(-1)}
-        index={lightboxIndex}
-        slides={slides}
-        render={{
-          slide: ({ slide }) => (
-            <div className="flex justify-center items-center h-full w-full">
-              <div className="flex flex-col items-center max-w-[90vw]">
-                <img
-                  src={slide.src}
-                  alt={slide.alt}
-                  className="max-h-[80vh] w-auto object-contain rounded-t-sm"
-                />
-
-                {slide.caption && (
-                  <div className="w-full bg-darkblue text-white text-sm px-4 py-2 text-center rounded-b-sm">
-                    {slide.caption}
-                  </div>
-                )}
-              </div>
-            </div>
-          ),
-        }}
-      />
+      <ContentLightbox index={lightboxIndex} slides={slides} onClose={closeLightbox} />
     </main>
   );
 }
