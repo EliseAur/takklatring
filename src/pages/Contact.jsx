@@ -108,17 +108,11 @@ export default function Contact() {
         divClassName="max-w-3xl mx-auto px-6 lg:px-10 py-12"
         actions={
           <>
-            <Link
-              to="/tjenester"
-              className="inline-flex text-center border border-orange bg-orange text-darkblue font-headings uppercase text-sm tracking-wider lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold"
-            >
+            <Link to="/tjenester" className="btn-primary">
               Se tjenester
             </Link>
 
-            <Link
-              to="/prosjekter"
-              className="inline-flex text-center border border-neutral-100/40 text-neutral-100 font-headings uppercase text-sm tracking-wider lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold"
-            >
+            <Link to="/prosjekter" className="btn-secondary">
               Se prosjekter
             </Link>
           </>
@@ -212,11 +206,7 @@ export default function Contact() {
               />
             </div>
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="inline-block border border-orange bg-orange text-darkblue font-headings uppercase text-sm tracking-wider lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold disabled:opacity-60 disabled:cursor-not-allowed"
-            >
+            <button type="submit" disabled={isSubmitting} className="btn-primary">
               {isSubmitting ? "Sender..." : "Send melding"}
             </button>
           </form>

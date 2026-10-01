@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faAt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { footerNavigationItems } from "./navigation";
 
 export default function Footer({ hero, footer }) {
   const title = hero?.hero_title || "Tak- og Fasadeklatring";
@@ -23,26 +24,13 @@ export default function Footer({ hero, footer }) {
         <nav className="md:mx-auto">
           <h4 className="font-headings text-lg font-bold text-neutral-100 mb-2">Navigasjon</h4>
           <ul className="space-y-2 text-neutral-200 marker:text-orange list-disc list-inside">
-            <li>
-              <Link to="/tjenester" className="hover:text-orange transition">
-                Tjenester
-              </Link>
-            </li>
-            <li>
-              <Link to="/prosjekter" className="hover:text-orange transition">
-                Prosjekter
-              </Link>
-            </li>
-            <li>
-              <Link to="/kontakt" className="hover:text-orange transition">
-                Bestilling
-              </Link>
-            </li>
-            <li>
-              <Link to="/om-oss" className="hover:text-orange transition">
-                Om oss
-              </Link>
-            </li>
+            {footerNavigationItems.map((item) => (
+              <li key={item.id}>
+                <Link to={item.to} className="hover:text-orange transition">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
 
