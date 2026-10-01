@@ -4,6 +4,7 @@ import NavDesktop from "./NavDesktop";
 import Hero from "./Hero";
 import DetailHero from "./DetailHero";
 import ContentLightbox from "./ContentLightbox";
+import WpContentSection from "./WpContentSection";
 import CardItem from "./CardItem";
 import ServicesPreview from "./ServicesPreview";
 import ProjectsPreview from "./ProjectsPreview";
@@ -27,6 +28,7 @@ export {
   Hero,
   DetailHero,
   ContentLightbox,
+  WpContentSection,
   CardItem,
   ServicesPreview,
   ProjectsPreview,

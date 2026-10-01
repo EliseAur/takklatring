@@ -8,6 +8,7 @@ import {
   PageLoader,
   DetailHero,
   ContentLightbox,
+  WpContentSection,
   ProjectBeforeAfterSection,
 } from "../components";
 import { useProjectDetail } from "../hooks/useProjectDetail";
@@ -156,25 +157,17 @@ export default function ProjectDetail() {
         }
       />
 
-      <section
-        id="content"
-        className="scroll-mt-[125px] lg:scroll-mt-[100px] w-full bg-neutral-100"
+      <WpContentSection
+        content={project.content}
+        onContentClick={handleContentClick}
+        bottomPaddingClassName="pb-12"
       >
-        <div className="max-w-4xl mx-auto px-6 pt-0 lg:pt-6 pb-12">
-          <article
-            className="wp-content max-w-4xl mx-auto md:px-14 my-10 lg:px-4"
-            onClick={handleContentClick}
-          >
-            <div dangerouslySetInnerHTML={{ __html: project.content }} />
-          </article>
-
-          <ProjectBeforeAfterSection
-            project={project}
-            contentSlidesLength={contentSlides.length}
-            setLightboxIndex={setLightboxIndex}
-          />
-        </div>
-      </section>
+        <ProjectBeforeAfterSection
+          project={project}
+          contentSlidesLength={contentSlides.length}
+          setLightboxIndex={setLightboxIndex}
+        />
+      </WpContentSection>
 
       <BookingSection />
       <ReviewsSection />

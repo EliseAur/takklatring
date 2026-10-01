@@ -8,6 +8,7 @@ import {
   PageLoader,
   DetailHero,
   ContentLightbox,
+  WpContentSection,
 } from "../components";
 import { useServiceDetail } from "../hooks/useServiceDetail";
 import { useSeoMeta } from "../hooks/useSeoMeta";
@@ -111,19 +112,7 @@ export default function ServiceDetail() {
         }
       />
 
-      <section
-        id="content"
-        className="scroll-mt-[125px] lg:scroll-mt-[100px] w-full bg-neutral-100"
-      >
-        <div className="max-w-4xl mx-auto px-6 pt-0 lg:pt-6 pb-6">
-          <article
-            className="wp-content max-w-4xl mx-auto md:px-14 my-10 lg:px-4"
-            onClick={handleContentClick}
-          >
-            <div dangerouslySetInnerHTML={{ __html: service.content }} />
-          </article>
-        </div>
-      </section>
+      <WpContentSection content={service.content} onContentClick={handleContentClick} />
 
       <BookingSection />
       <ReviewsSection />
