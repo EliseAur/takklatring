@@ -21,6 +21,7 @@ import MessageCard from "./MessageCard";
 import PageLoader from "./PageLoader";
 import ProjectBeforeAfterSection from "./ProjectBeforeAfterSection";
 import FormAlert from "./FormAlert";
+import FormField from "./FormField";
 
 export {
   Header,
@@ -46,4 +47,5 @@ export {
   PageLoader,
   ProjectBeforeAfterSection,
   FormAlert,
+  FormField,
 };
