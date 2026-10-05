@@ -35,7 +35,7 @@ body {
 @layer components {
   .btn-primary,
   .btn-secondary {
-    @apply inline-flex items-center justify-center text-center font-headings uppercase tracking-wider text-sm lg:text-base px-6 py-3 rounded-sm transition font-bold hover:scale-[1.01] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center text-center font-headings uppercase tracking-wider text-sm lg:text-base px-6 py-3 rounded-sm transition font-bold hover:scale-[1.01] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2;
   }
 
   .btn-primary {
