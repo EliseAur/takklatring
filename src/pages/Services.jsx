@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { PageHeader, CardsSection, CardItem, ErrorAlertPage, PageLoader } from "../components";
 import { useServices } from "../hooks/useServices";
 import { useSeoMeta } from "../hooks/useSeoMeta";
@@ -14,12 +14,6 @@ export default function Services() {
     description: "Se hva vi tilbyr av tjenester innen tak- og fasadearbeid og arbeid i høyden.",
     canonicalPath: "/tjenester",
   });
-
-  useEffect(() => {
-    if (!loading) {
-      window.scrollTo(0, 0);
-    }
-  }, [loading]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();

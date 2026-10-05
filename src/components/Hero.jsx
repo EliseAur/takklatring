@@ -8,7 +8,7 @@ import iconVerified from "../images/icon-verified-orange.svg";
  * Features:
  * - Hero image
  * - Main title, subtitle and short description
- * - Button to scroll to the services or order section / pages
+ * - Button to scroll to services section and link to contact page
  *
  * @component
  * @example
@@ -68,16 +68,10 @@ export default function Hero({ hero }) {
             ))}
           </div>
           <div className="flex flex-row gap-2 sm:gap-5">
-            <Link
-              to="/kontakt"
-              className="flex-1 text-center border border-orange bg-orange text-darkblue font-headings uppercase tracking-wider text-md lg:text-lg px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] font-bold transition"
-            >
+            <Link to="/kontakt" className="btn-primary flex-1">
               Få tilbud
             </Link>
-            <Link
-              to="/tjenester"
-              className="flex-1 text-center border border-neutral-100/40 text-neutral-100 font-headings uppercase tracking-wider text-md lg:text-lg px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] font-bold transition"
-            >
+            <Link to="/tjenester" className="btn-secondary flex-1">
               Tjenester
             </Link>
           </div>

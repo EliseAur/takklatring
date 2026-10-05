@@ -1,10 +1,10 @@
+import Alert from "./Alert";
+
 export default function ErrorAlertPage({ message }) {
   return (
     <section className="py-12 bg-neutral-100">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="rounded-md border-l-4 border-errorBorder bg-errorBg px-5 py-4">
-          <p className="text-errorText font-medium">{message}</p>
-        </div>
+        <Alert message={<p>{message}</p>} className="px-5 py-4" />
       </div>
     </section>
   );

@@ -1,21 +1,25 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { PageHeader, FormAlert } from "../components";
+import { PageHeader, FormAlert, FormField } from "../components";
+import { useContactForm } from "../hooks/useContactForm";
 import { useSeoMeta } from "../hooks/useSeoMeta";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [statusMessage, setStatusMessage] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
+  const { formData, isSubmitting, status, handleChange, handleSubmit } = useContactForm();
   const formRef = useRef(null);
+
+  useEffect(() => {
+    if (!status.message) return undefined;
+
+    const timeoutId = setTimeout(() => {
+      formRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 50);
+
+    return () => clearTimeout(timeoutId);
+  }, [status.message]);
 
   useSeoMeta({
     title: "Kontakt oss",
@@ -23,81 +27,6 @@ export default function Contact() {
       "Ta kontakt for befaring, tilbud eller spørsmål om tak- og fasadearbeid og arbeid i høyden.",
     canonicalPath: "/kontakt",
   });
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    setIsSubmitting(true);
-    setStatusMessage("");
-    setIsSuccess(false);
-
-    try {
-      const res = await fetch("https://takklatring.no/innhold/wp-json/takklatring/v1/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data?.message || "Noe gikk galt.");
-      }
-
-      setIsSuccess(true);
-      setStatusMessage("Takk! Meldingen er sendt. Vi tar kontakt så snart som mulig.");
-
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-      });
-
-      setTimeout(() => {
-        formRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }, 50);
-
-      console.log("Svar fra WordPress:", data);
-    } catch (error) {
-      setIsSuccess(false);
-      setStatusMessage(
-        "Feil ved innsending: " +
-          (error.message || "Noe gikk galt.") +
-          " Prøv igjen senere eller kontakt oss på mail eller telefon som du finner nederst på siden.",
-      );
-
-      setTimeout(() => {
-        formRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }, 50);
-
-      console.error("Feil ved innsending:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
 
   return (
     <div>
@@ -108,17 +37,11 @@ export default function Contact() {
         divClassName="max-w-3xl mx-auto px-6 lg:px-10 py-12"
         actions={
           <>
-            <Link
-              to="/tjenester"
-              className="inline-flex text-center border border-orange bg-orange text-darkblue font-headings uppercase text-sm tracking-wider lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold"
-            >
+            <Link to="/tjenester" className="btn-primary">
               Se tjenester
             </Link>
 
-            <Link
-              to="/prosjekter"
-              className="inline-flex text-center border border-neutral-100/40 text-neutral-100 font-headings uppercase text-sm tracking-wider lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold"
-            >
+            <Link to="/prosjekter" className="btn-secondary">
               Se prosjekter
             </Link>
           </>
@@ -139,84 +62,52 @@ export default function Contact() {
                 Fyll ut skjemaet under, så tar vi kontakt så snart som mulig.
               </p>
             </div>
-            {statusMessage && (
-              <FormAlert message={statusMessage} type={isSuccess ? "success" : "error"} />
-            )}
-            <div className="mb-7">
-              <label htmlFor="name" className="block text-sm font-bold text-darkblue mb-1">
-                Navn
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full rounded-md border border-neutral-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange focus:border-orange"
-                required
-              />
-            </div>
-            <div className="mb-7">
-              <label htmlFor="email" className="block text-sm font-bold text-darkblue mb-1">
-                E-post
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full rounded-md border border-neutral-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange focus:border-orange"
-                required
-              />
-            </div>
-            <div className="mb-7">
-              <label htmlFor="phone" className="block text-sm font-bold text-darkblue mb-1">
-                Telefon (valgfritt)
-              </label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full rounded-md border border-neutral-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange focus:border-orange"
-              />
-            </div>
-            <div className="mb-7">
-              <label htmlFor="subject" className="block text-sm font-bold text-darkblue mb-1">
-                Emne
-              </label>
-              <input
-                id="subject"
-                name="subject"
-                type="text"
-                value={formData.subject}
-                onChange={handleChange}
-                className="w-full rounded-md border border-neutral-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange focus:border-orange"
-                required
-              />
-            </div>
-            <div className="mb-7">
-              <label htmlFor="message" className="block text-sm font-bold text-darkblue mb-1">
-                Melding
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="6"
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full rounded-md border border-neutral-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange focus:border-orange"
-                required
-              />
-            </div>
+            {status.message && <FormAlert message={status.message} type={status.type} />}
+            <FormField
+              id="name"
+              name="name"
+              label="Navn"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <FormField
+              id="email"
+              name="email"
+              label="E-post"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <FormField
+              id="phone"
+              name="phone"
+              label="Telefon (valgfritt)"
+              type="tel"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+            <FormField
+              id="subject"
+              name="subject"
+              label="Emne"
+              value={formData.subject}
+              onChange={handleChange}
+              required
+            />
+            <FormField
+              id="message"
+              name="message"
+              label="Melding"
+              as="textarea"
+              rows={6}
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="inline-block border border-orange bg-orange text-darkblue font-headings uppercase text-sm tracking-wider lg:text-md px-6 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold disabled:opacity-60 disabled:cursor-not-allowed"
-            >
+            <button type="submit" disabled={isSubmitting} className="btn-primary">
               {isSubmitting ? "Sender..." : "Send melding"}
             </button>
           </form>

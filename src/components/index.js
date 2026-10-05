@@ -2,7 +2,11 @@ import Header from "./Header";
 import NavMobile from "./NavMobile";
 import NavDesktop from "./NavDesktop";
 import Hero from "./Hero";
-import ServiceCard from "./ServiceCard";
+import DetailHero from "./DetailHero";
+import ContentLightbox from "./ContentLightbox";
+import WpContentSection from "./WpContentSection";
+import ScrollToTop from "./ScrollToTop";
+import { contactNavigationItem } from "./navigation";
 import CardItem from "./CardItem";
 import ServicesPreview from "./ServicesPreview";
 import ProjectsPreview from "./ProjectsPreview";
@@ -18,13 +22,18 @@ import MessageCard from "./MessageCard";
 import PageLoader from "./PageLoader";
 import ProjectBeforeAfterSection from "./ProjectBeforeAfterSection";
 import FormAlert from "./FormAlert";
+import FormField from "./FormField";
 
 export {
   Header,
   NavDesktop,
   NavMobile,
   Hero,
-  ServiceCard,
+  DetailHero,
+  ContentLightbox,
+  WpContentSection,
+  ScrollToTop,
+  contactNavigationItem,
   CardItem,
   ServicesPreview,
   ProjectsPreview,
@@ -40,4 +49,5 @@ export {
   PageLoader,
   ProjectBeforeAfterSection,
   FormAlert,
+  FormField,
 };

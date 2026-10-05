@@ -1,4 +1,5 @@
 const WP_BASE = "https://takklatring.no/innhold/wp-json/wp/v2";
+const CONTACT_ENDPOINT = "https://takklatring.no/innhold/wp-json/takklatring/v1/contact";
 
 function getFeaturedImage(item) {
   const media = item?._embedded?.["wp:featuredmedia"]?.[0];
@@ -59,6 +60,36 @@ export async function getFooterData() {
     email: acf.email ?? "",
     sted: acf.sted ?? "",
   };
+}
+
+export async function submitContactForm(formData) {
+  let response;
+
+  try {
+    response = await fetch(CONTACT_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+  } catch {
+    throw new Error("Kunne ikke kontakte serveren. Prøv igjen senere.");
+  }
+
+  let data = null;
+
+  try {
+    data = await response.json();
+  } catch {
+    // Use the status code below when the server does not return JSON.
+  }
+
+  if (!response.ok) {
+    throw new Error(data?.message || "Noe gikk galt. Prøv igjen senere.");
+  }
+
+  return data;
 }
 
 // Henter alle tjenester (med featured image i _embed)

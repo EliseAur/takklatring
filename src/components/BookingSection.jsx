@@ -19,10 +19,7 @@ export default function BookingSection() {
             Vi tar gjerne en prat og hjelper deg med å finne riktig løsning for ditt tak eller din
             fasade.
           </p>
-          <a
-            href="/kontakt"
-            className="inline-block text-center border border-orange bg-orange text-darkblue font-headings uppercase tracking-wider text-md lg:text-lg px-12 py-3 rounded-sm hover:cursor-pointer hover:scale-[1.01] transition font-bold"
-          >
+          <a href="/kontakt" className="btn-primary btn-primary-lg">
             Få tilbud
           </a>
         </div>

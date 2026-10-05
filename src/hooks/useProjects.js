@@ -1,33 +1,13 @@
-import { useEffect, useState } from "react";
 import { getProjects } from "../api/wp";
+import { useAsyncResource } from "./useAsyncResource";
+
+const getErrorMessage = (error) => error?.message || "Ukjent feil";
 
 export function useProjects() {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const resource = useAsyncResource(() => getProjects(), {
+    initialData: [],
+    getError: getErrorMessage,
+  });
 
-  useEffect(() => {
-    let isMounted = true;
-
-    (async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        const data = await getProjects();
-
-        if (isMounted) setProjects(data);
-      } catch (e) {
-        if (isMounted) setError(e?.message || "Ukjent feil");
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    })();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
-  return { projects, loading, error };
+  return { projects: resource.data, loading: resource.loading, error: resource.error };
 }

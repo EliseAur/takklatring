@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { NavDesktop, NavMobile } from "./index";
+import { NavDesktop, NavMobile, contactNavigationItem } from "./index";
 import logoImage from "../images/Tak-logo-versjon-2-darkblue-medium.png";
 
 /**
@@ -81,10 +81,20 @@ export default function Header() {
             <img src={logoImage} alt="Takklatring logo" className="h-[65px] lg:h-[80px] w-auto" />
           </Link>
           <NavDesktop />
-          <div className="lg:hidden ml-auto">
+          <div className="lg:hidden ml-auto flex items-center gap-2">
+            <Link
+              to={contactNavigationItem.to}
+              onClick={handleLinkClick}
+              className="btn-primary px-3 py-1.5 text-xs mr-2"
+            >
+              Bestill
+            </Link>
             <button
               ref={toggleButtonRef} // Attach ref to the toggle button
               onClick={() => setIsOpen((prevState) => !prevState)} // Toggle menu state
+              aria-label={isOpen ? "Lukk meny" : "Åpne meny"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
               className="focus:outline-none"
             >
               <FontAwesomeIcon

@@ -11,8 +11,7 @@
   --color-successBg: #d1fae5;
   --color-successText: var(--color-green-800);
   --color-successBorder: var(--color-green-400);
-  /* --color-orange: var(--color-orange-600); */
-  /* --gradient-gradientOrange: linear-gradient(to bottom, var(--color-orange), var(--color-neutral-100)); */
+  --gradient-gradientOrange: linear-gradient(to top, var(--color-orange), var(--color-orange-100));
 }
 
 #root {
@@ -34,6 +33,37 @@ body {
 }
 
 @layer components {
+  .btn-primary,
+  .btn-secondary {
+    @apply inline-flex items-center justify-center text-center font-headings uppercase tracking-wider text-sm lg:text-base px-6 py-3 rounded-sm transition font-bold hover:scale-[1.01] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply border border-orange bg-orange text-darkblue;
+  }
+
+  .btn-secondary {
+    @apply border border-neutral-100/40 bg-transparent text-neutral-100;
+  }
+
+  .btn-primary-lg {
+    @apply text-base lg:text-lg px-12;
+  }
+
+  .btn-review {
+    border-color: transparent;
+    background-image: var(--gradient-gradientOrange);
+    background-clip: padding-box;
+  }
+
+  .btn-primary:disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
+
+  .btn-primary:disabled:hover {
+    transform: none;
+  }
+
   .wp-content h2 {
     @apply text-2xl md:text-3xl font-headings text-darkblue mt-10 mb-4;
   }
@@ -109,10 +139,6 @@ body {
     @apply flex-col flex-1 bg-darkblue border-l-4 border-orange rounded-md pt-6 px-6 pb-3 md:pt-8 md:px-8 md:pb-4;
   }
 
-  /* .wp-content .wp-block-column .wp-block-group ul {
-    @apply mb-0;
-  } */
-
   /* Overskrift i kolonnene */
 
   .wp-content .wp-block-column h4,
@@ -128,17 +154,4 @@ body {
   .wp-content .wp-block-column li {
     @apply mb-2 text-neutral-100;
   }
-
-  /* Ikke i bruk: */
-
-  /* Separator */
-  /* .wp-content hr {
-    @apply my-10 border-neutral-200;
-  }
-
-  .wp-content a {
-    @apply text-darkblue underline decoration-orange decoration-2 underline-offset-4;
-  }
-
-   */
 }
