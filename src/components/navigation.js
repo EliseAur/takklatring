@@ -5,7 +5,8 @@ const navigationItems = [
   { id: "about", label: "Om oss", to: "/om-oss", footerOrder: 4 },
 ];
 
-export const headerNavigationItems = navigationItems;
+export const contactNavigationItem = navigationItems.find((item) => item.id === "contact");
+export const headerNavigationItems = navigationItems.filter((item) => item.id !== "contact");
 
 export const footerNavigationItems = [...navigationItems].sort(
   (itemA, itemB) => itemA.footerOrder - itemB.footerOrder,

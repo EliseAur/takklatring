@@ -16,7 +16,10 @@ import { headerNavigationItems } from "./navigation";
  */
 export default function NavMobile({ onLinkClick }) {
   return (
-    <nav className="lg:hidden fixed top-0 left-0 w-full h-screen mt-[88px] flex flex-col items-center p-4 bg-neutral-100 font-headings font-bold text-2xl pt-30 ">
+    <nav
+      id="mobile-navigation"
+      className="lg:hidden fixed top-0 left-0 w-full h-screen mt-[88px] flex flex-col items-center p-4 bg-neutral-100 font-headings font-bold text-2xl pt-30"
+    >
       <div className="flex flex-col space-y-5 text-center">
         {headerNavigationItems.map((item) => (
           <Link

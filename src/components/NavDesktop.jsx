@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { headerNavigationItems } from "./navigation";
+import { contactNavigationItem, headerNavigationItems } from "./navigation";
 
 /**
  * NavDesktop component displays the desktop navigation bar with internal links and social icons.
@@ -27,6 +27,9 @@ export default function NavDesktop() {
             {item.label}
           </Link>
         ))}
+        <Link to={contactNavigationItem.to} className="btn-primary ml-4 px-4 py-1.5">
+          {contactNavigationItem.label}
+        </Link>
       </div>
     </nav>
   );
