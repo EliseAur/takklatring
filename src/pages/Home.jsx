@@ -33,7 +33,7 @@ const HOME_SCHEMA = [
  * Home page component that renders the hero and other main sections of the website.
  *
  * Features:
- * - Renders Hero, ServiceSection, BlogSection, and ReviewSection components
+ * - Renders Hero, ServiceSection (preview), BookingSection, ProjectsSection (preview), ReviewsSection and ReviewInviteSection components.
  *
  * @component
  * @example

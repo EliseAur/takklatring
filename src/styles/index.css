@@ -11,8 +11,7 @@
   --color-successBg: #d1fae5;
   --color-successText: var(--color-green-800);
   --color-successBorder: var(--color-green-400);
-  /* --color-orange: var(--color-orange-600); */
-  /* --gradient-gradientOrange: linear-gradient(to bottom, var(--color-orange), var(--color-neutral-100)); */
+  --gradient-gradientOrange: linear-gradient(to top, var(--color-orange), var(--color-orange-100));
 }
 
 #root {
@@ -52,7 +51,9 @@ body {
   }
 
   .btn-review {
-    @apply border-transparent bg-orange-200;
+    border-color: transparent;
+    background-image: var(--gradient-gradientOrange);
+    background-clip: padding-box;
   }
 
   .btn-primary:disabled {
@@ -138,10 +139,6 @@ body {
     @apply flex-col flex-1 bg-darkblue border-l-4 border-orange rounded-md pt-6 px-6 pb-3 md:pt-8 md:px-8 md:pb-4;
   }
 
-  /* .wp-content .wp-block-column .wp-block-group ul {
-    @apply mb-0;
-  } */
-
   /* Overskrift i kolonnene */
 
   .wp-content .wp-block-column h4,
@@ -157,17 +154,4 @@ body {
   .wp-content .wp-block-column li {
     @apply mb-2 text-neutral-100;
   }
-
-  /* Ikke i bruk: */
-
-  /* Separator */
-  /* .wp-content hr {
-    @apply my-10 border-neutral-200;
-  }
-
-  .wp-content a {
-    @apply text-darkblue underline decoration-orange decoration-2 underline-offset-4;
-  }
-
-   */
 }

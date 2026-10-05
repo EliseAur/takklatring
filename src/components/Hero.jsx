@@ -8,7 +8,7 @@ import iconVerified from "../images/icon-verified-orange.svg";
  * Features:
  * - Hero image
  * - Main title, subtitle and short description
- * - Button to scroll to the services or order section / pages
+ * - Button to scroll to services section and link to contact page
  *
  * @component
  * @example

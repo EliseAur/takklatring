@@ -6,7 +6,7 @@ import { headerNavigationItems } from "./navigation";
  *
  * Features:
  * - Navigation links to Services, Projects, Contact and About us pages.
- * - Only visible on medium screens and up (hidden on mobile)
+ * - Only visible on desktop screens (hidden on tablet and mobile).
  *
  * @component
  * @example

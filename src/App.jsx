@@ -5,12 +5,13 @@ import { useEffect, useState } from "react";
 import { getFooterData, getFrontPageHero } from "./api/wp";
 
 /**
- * App component sets up the main application structure and routing.
+ * App component sets up the application shell and client-side routing.
  *
  * Features:
- * - Provides routing for Home and ServiceDetail pages
- * - Renders Header and Footer on all pages
- * - Wraps content in a Router for navigation
+ * - Provides routes for the home, service, project, contact, and about pages
+ * - Renders the shared Header and Footer around every route
+ * - Resets scroll position when the route changes
+ * - Loads shared hero and footer data for the application shell
  *
  * @component
  * @example
